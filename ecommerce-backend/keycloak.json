@@ -1,0 +1,11 @@
+{
+    "realm": "Ecommerce_Car",
+    "auth-server-url": "http://localhost:8080/auth",
+    "ssl-required": "external",
+    "resource": "ecommerce-app",
+    "credentials": {
+      "secret": "GKalicr2Cj1fvW1iWR66DMkraosXT5PD"
+    },
+    "confidential-port": 0
+  }
+  
