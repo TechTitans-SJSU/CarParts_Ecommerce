@@ -48,10 +48,12 @@ app.use('/api/protected', keycloak.protect(), (req, res) => {
   res.json({ message: "This is a protected route" });
 });
 
+
 // Routes
 app.use('/auth', require('./routes/auth'));
 app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));
+app.use('/parts', require('./routes/parts'));
 app.use('/orders', require('./routes/orders'));
 app.use('/category', require('./routes/category'));
 app.use('/payments', require('./routes/payments'));

@@ -1,0 +1,126 @@
+product_id,category_id,product_name,part_id,sub_part,price,stock,description,image_url,unique_product_id
+1,1,AIR COMPRESSOR,1,Small Air Compressor,965.61,16,"Small Air Compressor from AIR COMPRESSOR under the Engine Parts category, designed for optimal performance.",,1_1
+2,1,AIR COMPRESSOR,2,High-Pressure Air Compressor,580.34,23,"High-Pressure Air Compressor from AIR COMPRESSOR under the Engine Parts category, designed for optimal performance.",,1_2
+3,1,AIR COMPRESSOR,3,Portable Air Compressor,982.97,23,"Portable Air Compressor from AIR COMPRESSOR under the Engine Parts category, designed for optimal performance.",,1_3
+4,1,AIR COMPRESSOR,4,Electric Air Compressor,623.65,16,"Electric Air Compressor from AIR COMPRESSOR under the Engine Parts category, designed for optimal performance.",,1_4
+5,1,AIR COMPRESSOR,5,Oil-Lubricated Air Compressor,816.14,28,"Oil-Lubricated Air Compressor from AIR COMPRESSOR under the Engine Parts category, designed for optimal performance.",,1_5
+6,1,ENGINE BLOCK,6,V6 Engine Block,647.36,25,"V6 Engine Block from ENGINE BLOCK under the Engine Parts category, designed for optimal performance.",,2_1
+7,1,ENGINE BLOCK,7,Inline-4 Engine Block,758.69,26,"Inline-4 Engine Block from ENGINE BLOCK under the Engine Parts category, designed for optimal performance.",,2_2
+8,1,ENGINE BLOCK,8,Diesel Engine Block,605.71,20,"Diesel Engine Block from ENGINE BLOCK under the Engine Parts category, designed for optimal performance.",,2_3
+9,1,ENGINE BLOCK,9,Aluminum Engine Block,914.46,30,"Aluminum Engine Block from ENGINE BLOCK under the Engine Parts category, designed for optimal performance.",,2_4
+10,1,ENGINE BLOCK,10,Cast Iron Engine Block,873.98,18,"Cast Iron Engine Block from ENGINE BLOCK under the Engine Parts category, designed for optimal performance.",,2_5
+11,1,ENGINE VALVE,11,Intake Valve,540.2,30,"Intake Valve from ENGINE VALVE under the Engine Parts category, designed for optimal performance.",,3_1
+12,1,ENGINE VALVE,12,Exhaust Valve,594.56,23,"Exhaust Valve from ENGINE VALVE under the Engine Parts category, designed for optimal performance.",,3_2
+13,1,ENGINE VALVE,13,Sodium Filled Valve,798.32,13,"Sodium Filled Valve from ENGINE VALVE under the Engine Parts category, designed for optimal performance.",,3_3
+14,1,ENGINE VALVE,14,Titanium Valve,687.18,28,"Titanium Valve from ENGINE VALVE under the Engine Parts category, designed for optimal performance.",,3_4
+15,1,ENGINE VALVE,15,Multi-Groove Valve,528.82,13,"Multi-Groove Valve from ENGINE VALVE under the Engine Parts category, designed for optimal performance.",,3_5
+16,1,CAMSHAFT,16,Roller Camshaft,726.4,17,"Roller Camshaft from CAMSHAFT under the Engine Parts category, designed for optimal performance.",,4_1
+17,1,CAMSHAFT,17,Flat-Tappet Camshaft,841.02,12,"Flat-Tappet Camshaft from CAMSHAFT under the Engine Parts category, designed for optimal performance.",,4_2
+18,1,CAMSHAFT,18,Hydraulic Camshaft,600.8,21,"Hydraulic Camshaft from CAMSHAFT under the Engine Parts category, designed for optimal performance.",,4_3
+19,1,CAMSHAFT,19,Solid Lifter Camshaft,586.59,21,"Solid Lifter Camshaft from CAMSHAFT under the Engine Parts category, designed for optimal performance.",,4_4
+20,1,CAMSHAFT,20,High-Lift Camshaft,835.03,19,"High-Lift Camshaft from CAMSHAFT under the Engine Parts category, designed for optimal performance.",,4_5
+21,1,PISTON,21,Forged Piston,766.36,13,"Forged Piston from PISTON under the Engine Parts category, designed for optimal performance.",,5_1
+22,1,PISTON,22,Cast Piston,868.43,28,"Cast Piston from PISTON under the Engine Parts category, designed for optimal performance.",,5_2
+23,1,PISTON,23,Hypereutectic Piston,509.24,11,"Hypereutectic Piston from PISTON under the Engine Parts category, designed for optimal performance.",,5_3
+24,1,PISTON,24,Racing Piston,879.29,15,"Racing Piston from PISTON under the Engine Parts category, designed for optimal performance.",,5_4
+25,1,PISTON,25,Low-Compression Piston,672.81,22,"Low-Compression Piston from PISTON under the Engine Parts category, designed for optimal performance.",,5_5
+26,1,CARBURETOR,26,Two-Barrel Carburetor,983.69,20,"Two-Barrel Carburetor from CARBURETOR under the Engine Parts category, designed for optimal performance.",,6_1
+27,1,CARBURETOR,27,Four-Barrel Carburetor,750.91,16,"Four-Barrel Carburetor from CARBURETOR under the Engine Parts category, designed for optimal performance.",,6_2
+28,1,CARBURETOR,28,Performance Carburetor,616.32,16,"Performance Carburetor from CARBURETOR under the Engine Parts category, designed for optimal performance.",,6_3
+29,1,CARBURETOR,29,Electric Carburetor,549.09,29,"Electric Carburetor from CARBURETOR under the Engine Parts category, designed for optimal performance.",,6_4
+30,1,CARBURETOR,30,High-Efficiency Carburetor,698.49,24,"High-Efficiency Carburetor from CARBURETOR under the Engine Parts category, designed for optimal performance.",,6_5
+31,1,CLUTCH PLATE,31,Single Clutch Plate,505.04,14,"Single Clutch Plate from CLUTCH PLATE under the Engine Parts category, designed for optimal performance.",,7_1
+32,1,CLUTCH PLATE,32,Twin Disc Clutch Plate,815.12,20,"Twin Disc Clutch Plate from CLUTCH PLATE under the Engine Parts category, designed for optimal performance.",,7_2
+33,1,CLUTCH PLATE,33,Racing Clutch Plate,979.61,15,"Racing Clutch Plate from CLUTCH PLATE under the Engine Parts category, designed for optimal performance.",,7_3
+34,1,CLUTCH PLATE,34,Organic Clutch Plate,775.95,22,"Organic Clutch Plate from CLUTCH PLATE under the Engine Parts category, designed for optimal performance.",,7_4
+35,1,CLUTCH PLATE,35,Ceramic Clutch Plate,579.87,18,"Ceramic Clutch Plate from CLUTCH PLATE under the Engine Parts category, designed for optimal performance.",,7_5
+36,2,ALTERNATOR,36,High-Output Alternator,587.05,27,"High-Output Alternator from ALTERNATOR under the Electrical Parts category, designed for optimal performance.",,8_1
+37,2,ALTERNATOR,37,Remanufactured Alternator,725.81,18,"Remanufactured Alternator from ALTERNATOR under the Electrical Parts category, designed for optimal performance.",,8_2
+38,2,ALTERNATOR,38,One-Wire Alternator,674.9,13,"One-Wire Alternator from ALTERNATOR under the Electrical Parts category, designed for optimal performance.",,8_3
+39,2,ALTERNATOR,39,Brushless Alternator,970.84,16,"Brushless Alternator from ALTERNATOR under the Electrical Parts category, designed for optimal performance.",,8_4
+40,2,ALTERNATOR,40,Dual Alternator,710.77,13,"Dual Alternator from ALTERNATOR under the Electrical Parts category, designed for optimal performance.",,8_5
+41,2,IGNITION COIL,41,High-Performance Ignition Coil,556.34,22,"High-Performance Ignition Coil from IGNITION COIL under the Electrical Parts category, designed for optimal performance.",,9_1
+42,2,IGNITION COIL,42,Coil-on-Plug Ignition Coil,590.52,17,"Coil-on-Plug Ignition Coil from IGNITION COIL under the Electrical Parts category, designed for optimal performance.",,9_2
+43,2,IGNITION COIL,43,Distributor-Type Ignition Coil,925.15,30,"Distributor-Type Ignition Coil from IGNITION COIL under the Electrical Parts category, designed for optimal performance.",,9_3
+44,2,IGNITION COIL,44,Direct Ignition Coil,672.8,27,"Direct Ignition Coil from IGNITION COIL under the Electrical Parts category, designed for optimal performance.",,9_4
+45,2,IGNITION COIL,45,Compact Ignition Coil,502.8,15,"Compact Ignition Coil from IGNITION COIL under the Electrical Parts category, designed for optimal performance.",,9_5
+46,2,BATTERY,46,AGM Battery,909.51,27,"AGM Battery from BATTERY under the Electrical Parts category, designed for optimal performance.",,10_1
+47,2,BATTERY,47,Gel Cell Battery,578.99,28,"Gel Cell Battery from BATTERY under the Electrical Parts category, designed for optimal performance.",,10_2
+48,2,BATTERY,48,Lead Acid Battery,816.45,26,"Lead Acid Battery from BATTERY under the Electrical Parts category, designed for optimal performance.",,10_3
+49,2,BATTERY,49,Lithium-Ion Battery,960.21,29,"Lithium-Ion Battery from BATTERY under the Electrical Parts category, designed for optimal performance.",,10_4
+50,2,BATTERY,50,Deep Cycle Battery,503.6,29,"Deep Cycle Battery from BATTERY under the Electrical Parts category, designed for optimal performance.",,10_5
+51,2,SPARK PLUG,51,Iridium Spark Plug,896.49,25,"Iridium Spark Plug from SPARK PLUG under the Electrical Parts category, designed for optimal performance.",,11_1
+52,2,SPARK PLUG,52,Platinum Spark Plug,908.7,22,"Platinum Spark Plug from SPARK PLUG under the Electrical Parts category, designed for optimal performance.",,11_2
+53,2,SPARK PLUG,53,Copper Spark Plug,503.44,20,"Copper Spark Plug from SPARK PLUG under the Electrical Parts category, designed for optimal performance.",,11_3
+54,2,SPARK PLUG,54,Double Platinum Spark Plug,791.36,17,"Double Platinum Spark Plug from SPARK PLUG under the Electrical Parts category, designed for optimal performance.",,11_4
+55,2,SPARK PLUG,55,Laser Iridium Spark Plug,608.02,27,"Laser Iridium Spark Plug from SPARK PLUG under the Electrical Parts category, designed for optimal performance.",,11_5
+56,2,FUSE BOX,56,Standard Fuse Box,652.32,13,"Standard Fuse Box from FUSE BOX under the Electrical Parts category, designed for optimal performance.",,12_1
+57,2,FUSE BOX,57,Mini Fuse Box,962.99,24,"Mini Fuse Box from FUSE BOX under the Electrical Parts category, designed for optimal performance.",,12_2
+58,2,FUSE BOX,58,High-Power Fuse Box,927.84,19,"High-Power Fuse Box from FUSE BOX under the Electrical Parts category, designed for optimal performance.",,12_3
+59,2,FUSE BOX,59,Waterproof Fuse Box,887.13,16,"Waterproof Fuse Box from FUSE BOX under the Electrical Parts category, designed for optimal performance.",,12_4
+60,2,FUSE BOX,60,Automotive Fuse Box,815.09,12,"Automotive Fuse Box from FUSE BOX under the Electrical Parts category, designed for optimal performance.",,12_5
+61,3,BRAKE CALIPER,61,Fixed Brake Caliper,775.05,15,"Fixed Brake Caliper from BRAKE CALIPER under the Braking System category, designed for optimal performance.",,13_1
+62,3,BRAKE CALIPER,62,Floating Brake Caliper,587.17,24,"Floating Brake Caliper from BRAKE CALIPER under the Braking System category, designed for optimal performance.",,13_2
+63,3,BRAKE CALIPER,63,High-Performance Brake Caliper,766.33,24,"High-Performance Brake Caliper from BRAKE CALIPER under the Braking System category, designed for optimal performance.",,13_3
+64,3,BRAKE CALIPER,64,Single-Piston Brake Caliper,923.64,13,"Single-Piston Brake Caliper from BRAKE CALIPER under the Braking System category, designed for optimal performance.",,13_4
+65,3,BRAKE CALIPER,65,Dual-Piston Brake Caliper,800.27,22,"Dual-Piston Brake Caliper from BRAKE CALIPER under the Braking System category, designed for optimal performance.",,13_5
+66,3,BRAKE PAD,66,Ceramic Brake Pad,510.55,15,"Ceramic Brake Pad from BRAKE PAD under the Braking System category, designed for optimal performance.",,14_1
+67,3,BRAKE PAD,67,Semi-Metallic Brake Pad,892.4,13,"Semi-Metallic Brake Pad from BRAKE PAD under the Braking System category, designed for optimal performance.",,14_2
+68,3,BRAKE PAD,68,Low-Metallic Brake Pad,550.53,26,"Low-Metallic Brake Pad from BRAKE PAD under the Braking System category, designed for optimal performance.",,14_3
+69,3,BRAKE PAD,69,Organic Brake Pad,978.18,17,"Organic Brake Pad from BRAKE PAD under the Braking System category, designed for optimal performance.",,14_4
+70,3,BRAKE PAD,70,High-Performance Brake Pad,670.24,24,"High-Performance Brake Pad from BRAKE PAD under the Braking System category, designed for optimal performance.",,14_5
+71,3,BRAKE ROTOR,71,Slotted Brake Rotor,553.87,22,"Slotted Brake Rotor from BRAKE ROTOR under the Braking System category, designed for optimal performance.",,15_1
+72,3,BRAKE ROTOR,72,Cross-Drilled Brake Rotor,950.31,28,"Cross-Drilled Brake Rotor from BRAKE ROTOR under the Braking System category, designed for optimal performance.",,15_2
+73,3,BRAKE ROTOR,73,Vented Brake Rotor,817.17,14,"Vented Brake Rotor from BRAKE ROTOR under the Braking System category, designed for optimal performance.",,15_3
+74,3,BRAKE ROTOR,74,Solid Brake Rotor,879.85,30,"Solid Brake Rotor from BRAKE ROTOR under the Braking System category, designed for optimal performance.",,15_4
+75,3,BRAKE ROTOR,75,High-Carbon Brake Rotor,716.28,12,"High-Carbon Brake Rotor from BRAKE ROTOR under the Braking System category, designed for optimal performance.",,15_5
+76,3,BRAKE BOOSTER,76,Vacuum Brake Booster,678.79,26,"Vacuum Brake Booster from BRAKE BOOSTER under the Braking System category, designed for optimal performance.",,16_1
+77,3,BRAKE BOOSTER,77,Hydraulic Brake Booster,977.68,11,"Hydraulic Brake Booster from BRAKE BOOSTER under the Braking System category, designed for optimal performance.",,16_2
+78,3,BRAKE BOOSTER,78,Single Diaphragm Brake Booster,787.69,15,"Single Diaphragm Brake Booster from BRAKE BOOSTER under the Braking System category, designed for optimal performance.",,16_3
+79,3,BRAKE BOOSTER,79,Dual Diaphragm Brake Booster,723.16,18,"Dual Diaphragm Brake Booster from BRAKE BOOSTER under the Braking System category, designed for optimal performance.",,16_4
+80,3,BRAKE BOOSTER,80,Electric Brake Booster,563.46,13,"Electric Brake Booster from BRAKE BOOSTER under the Braking System category, designed for optimal performance.",,16_5
+81,4,COIL SPRING,81,Heavy-Duty Coil Spring,792.77,29,"Heavy-Duty Coil Spring from COIL SPRING under the Suspension Parts category, designed for optimal performance.",,17_1
+82,4,COIL SPRING,82,Lowering Coil Spring,880.48,21,"Lowering Coil Spring from COIL SPRING under the Suspension Parts category, designed for optimal performance.",,17_2
+83,4,COIL SPRING,83,Progressive Coil Spring,865.41,24,"Progressive Coil Spring from COIL SPRING under the Suspension Parts category, designed for optimal performance.",,17_3
+84,4,COIL SPRING,84,Constant Rate Coil Spring,847.23,20,"Constant Rate Coil Spring from COIL SPRING under the Suspension Parts category, designed for optimal performance.",,17_4
+85,4,COIL SPRING,85,Mini Coil Spring,668.73,24,"Mini Coil Spring from COIL SPRING under the Suspension Parts category, designed for optimal performance.",,17_5
+86,4,LEAF SPRING,86,Multi-Leaf Spring,779.1,23,"Multi-Leaf Spring from LEAF SPRING under the Suspension Parts category, designed for optimal performance.",,18_1
+87,4,LEAF SPRING,87,Mono-Leaf Spring,993.2,26,"Mono-Leaf Spring from LEAF SPRING under the Suspension Parts category, designed for optimal performance.",,18_2
+88,4,LEAF SPRING,88,Parabolic Leaf Spring,686.4,19,"Parabolic Leaf Spring from LEAF SPRING under the Suspension Parts category, designed for optimal performance.",,18_3
+89,4,LEAF SPRING,89,Heavy-Duty Leaf Spring,501.18,20,"Heavy-Duty Leaf Spring from LEAF SPRING under the Suspension Parts category, designed for optimal performance.",,18_4
+90,4,LEAF SPRING,90,Tapered Leaf Spring,854.14,25,"Tapered Leaf Spring from LEAF SPRING under the Suspension Parts category, designed for optimal performance.",,18_5
+91,4,SHOCK ABSORBER,91,Twin-Tube Shock Absorber,917.98,16,"Twin-Tube Shock Absorber from SHOCK ABSORBER under the Suspension Parts category, designed for optimal performance.",,19_1
+92,4,SHOCK ABSORBER,92,Monotube Shock Absorber,712.7,15,"Monotube Shock Absorber from SHOCK ABSORBER under the Suspension Parts category, designed for optimal performance.",,19_2
+93,4,SHOCK ABSORBER,93,Gas-Charged Shock Absorber,846.82,10,"Gas-Charged Shock Absorber from SHOCK ABSORBER under the Suspension Parts category, designed for optimal performance.",,19_3
+94,4,SHOCK ABSORBER,94,Air Shock Absorber,915.94,15,"Air Shock Absorber from SHOCK ABSORBER under the Suspension Parts category, designed for optimal performance.",,19_4
+95,4,SHOCK ABSORBER,95,Coilover Shock Absorber,857.44,10,"Coilover Shock Absorber from SHOCK ABSORBER under the Suspension Parts category, designed for optimal performance.",,19_5
+96,5,FUEL INJECTOR,96,Port Fuel Injector,620.72,27,"Port Fuel Injector from FUEL INJECTOR under the Fuel System category, designed for optimal performance.",,20_1
+97,5,FUEL INJECTOR,97,Direct Fuel Injector,689.8,11,"Direct Fuel Injector from FUEL INJECTOR under the Fuel System category, designed for optimal performance.",,20_2
+98,5,FUEL INJECTOR,98,Mechanical Fuel Injector,740.3,12,"Mechanical Fuel Injector from FUEL INJECTOR under the Fuel System category, designed for optimal performance.",,20_3
+99,5,FUEL INJECTOR,99,Electronic Fuel Injector,933.87,27,"Electronic Fuel Injector from FUEL INJECTOR under the Fuel System category, designed for optimal performance.",,20_4
+100,5,FUEL INJECTOR,100,Diesel Fuel Injector,557.14,29,"Diesel Fuel Injector from FUEL INJECTOR under the Fuel System category, designed for optimal performance.",,20_5
+101,5,FUEL PUMP,101,In-Tank Fuel Pump,901.78,24,"In-Tank Fuel Pump from FUEL PUMP under the Fuel System category, designed for optimal performance.",,21_1
+102,5,FUEL PUMP,102,External Fuel Pump,727.93,16,"External Fuel Pump from FUEL PUMP under the Fuel System category, designed for optimal performance.",,21_2
+103,5,FUEL PUMP,103,Mechanical Fuel Pump,858.84,25,"Mechanical Fuel Pump from FUEL PUMP under the Fuel System category, designed for optimal performance.",,21_3
+104,5,FUEL PUMP,104,Electric Fuel Pump,541.8,23,"Electric Fuel Pump from FUEL PUMP under the Fuel System category, designed for optimal performance.",,21_4
+105,5,FUEL PUMP,105,High-Performance Fuel Pump,905.01,28,"High-Performance Fuel Pump from FUEL PUMP under the Fuel System category, designed for optimal performance.",,21_5
+106,6,MUFFLER,106,Glasspack Muffler,866.41,28,"Glasspack Muffler from MUFFLER under the Exhaust System category, designed for optimal performance.",,22_1
+107,6,MUFFLER,107,Chambered Muffler,928.96,12,"Chambered Muffler from MUFFLER under the Exhaust System category, designed for optimal performance.",,22_2
+108,6,MUFFLER,108,Turbo Muffler,721.37,26,"Turbo Muffler from MUFFLER under the Exhaust System category, designed for optimal performance.",,22_3
+109,6,MUFFLER,109,Straight-Through Muffler,997.26,19,"Straight-Through Muffler from MUFFLER under the Exhaust System category, designed for optimal performance.",,22_4
+110,6,MUFFLER,110,Performance Muffler,842.87,17,"Performance Muffler from MUFFLER under the Exhaust System category, designed for optimal performance.",,22_5
+111,6,EXHAUST MANIFOLD,111,Cast Iron Exhaust Manifold,601.62,10,"Cast Iron Exhaust Manifold from EXHAUST MANIFOLD under the Exhaust System category, designed for optimal performance.",,23_1
+112,6,EXHAUST MANIFOLD,112,Stainless Steel Exhaust Manifold,892.87,12,"Stainless Steel Exhaust Manifold from EXHAUST MANIFOLD under the Exhaust System category, designed for optimal performance.",,23_2
+113,6,EXHAUST MANIFOLD,113,Tuned Exhaust Manifold,955.8,21,"Tuned Exhaust Manifold from EXHAUST MANIFOLD under the Exhaust System category, designed for optimal performance.",,23_3
+114,6,EXHAUST MANIFOLD,114,Performance Exhaust Manifold,969.27,11,"Performance Exhaust Manifold from EXHAUST MANIFOLD under the Exhaust System category, designed for optimal performance.",,23_4
+115,6,EXHAUST MANIFOLD,115,Turbo Exhaust Manifold,526.35,21,"Turbo Exhaust Manifold from EXHAUST MANIFOLD under the Exhaust System category, designed for optimal performance.",,23_5
+116,7,GEARBOX,116,Automatic Gearbox,772.23,25,"Automatic Gearbox from GEARBOX under the Transmission category, designed for optimal performance.",,24_1
+117,7,GEARBOX,117,Manual Gearbox,874.23,14,"Manual Gearbox from GEARBOX under the Transmission category, designed for optimal performance.",,24_2
+118,7,GEARBOX,118,Dual-Clutch Gearbox,690.79,11,"Dual-Clutch Gearbox from GEARBOX under the Transmission category, designed for optimal performance.",,24_3
+119,7,GEARBOX,119,CVT Gearbox,931.22,17,"CVT Gearbox from GEARBOX under the Transmission category, designed for optimal performance.",,24_4
+120,7,GEARBOX,120,Sequential Gearbox,767.26,29,"Sequential Gearbox from GEARBOX under the Transmission category, designed for optimal performance.",,24_5
+121,7,TORQUE CONVERTER,121,Lockup Torque Converter,792.41,14,"Lockup Torque Converter from TORQUE CONVERTER under the Transmission category, designed for optimal performance.",,25_1
+122,7,TORQUE CONVERTER,122,High Stall Torque Converter,558.96,30,"High Stall Torque Converter from TORQUE CONVERTER under the Transmission category, designed for optimal performance.",,25_2
+123,7,TORQUE CONVERTER,123,Performance Torque Converter,715.14,23,"Performance Torque Converter from TORQUE CONVERTER under the Transmission category, designed for optimal performance.",,25_3
+124,7,TORQUE CONVERTER,124,Racing Torque Converter,987.2,11,"Racing Torque Converter from TORQUE CONVERTER under the Transmission category, designed for optimal performance.",,25_4
+125,7,TORQUE CONVERTER,125,Heavy Duty Torque Converter,541.24,20,"Heavy Duty Torque Converter from TORQUE CONVERTER under the Transmission category, designed for optimal performance.",,25_5
