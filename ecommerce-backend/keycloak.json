@@ -6,6 +6,9 @@
     "credentials": {
       "secret": "GKalicr2Cj1fvW1iWR66DMkraosXT5PD"
     },
+    "bearer-only": "true",
+    "verify-token-audience": "true",
+    "use-resource-role-mappings": "true",
     "confidential-port": 0
   }
   

@@ -55,7 +55,7 @@ const db = require('../models');
 
 /**
  * @swagger
- * /categories:
+ * /category:
  *   post:
  *     summary: Create a new category
  *     requestBody:
@@ -85,7 +85,7 @@ router.post('/', async (req, res) => {
 
 /**
  * @swagger
- * /categories:
+ * /category:
  *   get:
  *     summary: Get all categories
  *     responses:
@@ -111,7 +111,7 @@ router.get('/', async (req, res) => {
 
 /**
  * @swagger
- * /categories/{id}:
+ * /category/{id}:
  *   put:
  *     summary: Update a category
  *     parameters:
@@ -148,7 +148,7 @@ router.put('/:id', async (req, res) => {
 
 /**
  * @swagger
- * /categories/{id}:
+ * /category/{id}:
  *   delete:
  *     summary: Delete a category
  *     parameters:

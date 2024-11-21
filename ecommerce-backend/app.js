@@ -26,7 +26,7 @@ const memoryStore = new session.MemoryStore();
 // });
 
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:3000'], // Keycloak server
+  origin: ['http://localhost:8080', 'http://localhost:3004'], // Keycloak server
   credentials: true
 }));
 
@@ -50,6 +50,7 @@ app.use('/api/protected', keycloak.protect(), (req, res) => {
 
 
 // Routes
+//app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth'));
 app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));
