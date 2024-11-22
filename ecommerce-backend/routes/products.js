@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const { where } = require('sequelize');
 
 /**
  * @swagger
@@ -98,6 +99,76 @@ router.get('/:id', async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
+/**
+ * @swagger
+ * /products/category/{id}:
+ *   get:
+ *     summary: Get product by Category ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID of the Category to retrieve products
+ *     responses:
+ *       200:
+ *         description: List of products in the category
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: Product not found
+ *       500:
+ *         description: Internal server error
+ */
+// router.get('/category/:id', async (req, res) => {
+//   try {
+//     const product = await db.Product.findAll(req.params.id, {
+//       where: { category_id: req.params.id },
+//       include: [
+//         {
+//           model: db.Category,
+//           attributes: ['category_id','category_name']
+//         }
+//       ]
+//     });
+//     if (product.length > 0) {
+//       res.json(product);
+//     } else {
+//       res.status(404).send('No products found for the given category');
+//     }
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// });
+
+router.get('/category/:id', async (req, res) => {
+  try {
+    const category_id = req.params.id;
+
+    const products = await db.Product.findAll({
+      where: { category_id }, // Pass an options object with a where clause
+      include: [
+        {
+          model: db.Category,
+          attributes: ['category_id', 'category_name'] // Include only relevant Category fields
+        }
+      ]
+    });
+
+    if (products.length > 0) {
+      res.json(products);
+    } else {
+      res.status(404).send('No products found for the given category');
+    }
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 
 /**
  * @swagger

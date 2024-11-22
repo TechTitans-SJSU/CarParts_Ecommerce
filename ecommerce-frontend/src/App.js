@@ -1,61 +1,57 @@
-
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import ProductDetails from './pages/ProductDetails';
-import Cart from './components/Cart';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Home from './pages/Home';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Category from './pages/Category';
+import CategoryProducts from './pages/CategoryProducts';
 import Login from './pages/Login';
-import Register from './pages/Register';
-import OrderHistory from './pages/OrderHistory';
-import { useDispatch } from 'react-redux';
+import PrivateRoute from './components/PrivateRoute';
+import { ReactKeycloakProvider } from '@react-keycloak/web';
+import keycloak from './config/keycloak';
 
-// function App() {
-//     const { keycloak, initialized } = useKeycloak();
+const App = () => {
+  // const [authenticated, setAuthenticated] = useState(false);
 
-//     if (!initialized) {
-//         return <div>Loading...</div>;
-//     }
+  // useEffect(() => {
+  //   initKeycloak()
+  //     .then((auth) => {
+  //       setAuthenticated(auth);
+  //     })
+  //     .catch(console.error);
+  // }, []);
 
-//     if (!keycloak.authenticated) {
-//         return <div>Not authenticated</div>;
-//     }
-function App({ keycloak }) {
-    const dispatch = useDispatch();
+  // if (!authenticated) return <div>Loading...</div>;
 
-    useEffect(() => {
-        if (keycloak.authenticated) {
-            // You can dispatch actions to store user info in Redux
-            dispatch({
-                type: 'SET_USER',
-                payload: {
-                    username: keycloak.tokenParsed?.preferred_username,
-                    roles: keycloak.realmAccess?.roles || [],
-                    token: keycloak.token
-                }
-            });
-        }
-    }, [keycloak.authenticated, dispatch]);
-
-    if (!keycloak.authenticated) {
-        return <div>Loading...</div>;
-    }
-
-    return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/product/:id" element={<ProductDetails />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/orders" element={<OrderHistory />} />
-            </Routes>
-            <Footer />
-        </Router>
-    );
-}
+  return (
+    <ReactKeycloakProvider authClient={keycloak}
+    initOptions={{
+      onLoad: 'login-required',
+      silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+      pkceMethod: 'S256'
+    }}>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        <Routes>
+          {/* <Route path="/login" element={<Login />} /> */}
+          <Route element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/products/category/:categoryId" element={<CategoryProducts />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
+  </ReactKeycloakProvider>
+  );
+};
 
 export default App;

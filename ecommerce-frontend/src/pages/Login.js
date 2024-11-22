@@ -1,67 +1,18 @@
-// import React, { useState } from 'react';
-// import '../styles/Login.css';
+import { useKeycloak } from '@react-keycloak/web';
 
-import React, { useEffect } from 'react';
-import keycloak from '../keycloak';
-import '../styles/Login.css';
+const Login = () => {
+  const { keycloak } = useKeycloak();
 
-function Login() {
-    useEffect(() => {
-        keycloak.init({ onLoad: 'login-required'}).then((authenticated) => {
-            if (authenticated) {
-                console.log('User authenticated');
-                console.log('Token:', keycloak.token);
-            } else {
-                console.warn('User not authenticated');
-            }
-        }).catch((error) => {
-            console.error('Failed to initialize Keycloak:', error);
-        });
-    }, []);
-
-    const handleLogout = () => {
-        keycloak.logout();
-    };
-
-    return (
-        <div className="login-page">
-            <h1>Login</h1>
-            <p>You are logged in using Keycloak.</p>
-            <button onClick={handleLogout}>Logout</button>
-        </div>
-    );
-}
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <button
+        onClick={() => keycloak.login()}
+        className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
+      >
+        Login
+      </button>
+    </div>
+  );
+};
 
 export default Login;
-
-// function Login() {
-//     const [username, setUsername] = useState('');
-//     const [password, setPassword] = useState('');
-
-//     const handleLogin = () => {
-//         // Perform login logic here
-//         console.log('Username:', username);
-//         console.log('Password:', password);
-//     };
-
-//     return (
-//         <div className="login-page">
-//             <h1>Login</h1>
-//             <input
-//                 type="text"
-//                 placeholder="Username"
-//                 value={username}
-//                 onChange={(e) => setUsername(e.target.value)}
-//             />
-//             <input
-//                 type="password"
-//                 placeholder="Password"
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//             />
-//             <button onClick={handleLogin}>Login</button>
-//         </div>
-//     );
-// }
-
-// export default Login;
