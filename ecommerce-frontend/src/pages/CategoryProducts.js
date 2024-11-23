@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { categoryService } from '../services/category';
+//import { categoryService } from '../services/category';
+import { productService } from '../services/products';
 
 const CategoryProducts = () => {
   const [products, setProducts] = useState([]);
@@ -10,7 +11,7 @@ const CategoryProducts = () => {
   useEffect(() => {
     const fetchProductsByCategory = async () => {
       try {
-        const response = await categoryService.getProductsByCategory(categoryId);
+        const response = await productService.getByCategory(categoryId);
         setProducts(response.data);
       } catch (error) {
         console.error('Error:', error);

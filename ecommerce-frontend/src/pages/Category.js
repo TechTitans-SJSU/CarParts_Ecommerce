@@ -22,8 +22,8 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  const handleCategoryClick = (categoryId) => {
-    navigate(`/products/category/${categoryId}`);
+  const handleCategoryClick = (id) => {
+    navigate(`/products/category/${id}`);
   };
 
   if (loading) return <div>Loading...</div>;
