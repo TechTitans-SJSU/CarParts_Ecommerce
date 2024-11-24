@@ -31,8 +31,10 @@ class DatabaseConnector:
                 self.connect()
 
     def connect(self):
-        """Initializes the database engine with the provided credentials."""
-        db_uri = f"postgresql+psycopg2://{self.username}:{self.password}@{self.host}:{self.port}/{self.database}"
+        """Initializes the database connection to Neon database."""
+        # Use the Neon connection string format
+        db_uri = f"{self.db_type}://{self.username}:{self.password}@{self.host}/{self.database}?sslmode=require"
+        
         try:
             self.engine = create_engine(db_uri)
             print("Database connection established.")
@@ -83,11 +85,10 @@ class DatabaseManager:
         """Initialize database connection"""
         try:
             self.connector = DatabaseConnector(
-                db_type="mysql+pymysql",
+                db_type="postgresql",  # Changed from mysql+pymysql
                 username=os.getenv("DB_USER"),
                 password=os.getenv("DB_PASSWORD"),
-                host=os.getenv("DB_HOST", "localhost"),
-                port=int(os.getenv("DB_PORT", "3306")),
+                host=os.getenv("DB_HOST"),
                 database=os.getenv("DB_NAME")
             )
         except Exception as e:
