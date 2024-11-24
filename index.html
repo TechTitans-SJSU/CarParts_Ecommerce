@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="user-info">
+                <div class="avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2>AI Assistant</h2>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message incoming">
+                <p>Hello! How can I help you today?</p>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <button id="sendButton">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

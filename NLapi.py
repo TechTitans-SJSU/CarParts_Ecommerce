@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
 from langchain.agents.agent_types import AgentType
@@ -173,6 +174,17 @@ class DatabaseManager:
 
 # Initialize FastAPI app
 app = FastAPI(title="Database Query API")
+
+
+app = FastAPI(title="Database Query API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, specify actual origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Initialize DatabaseManager
 db_manager = DatabaseManager()
