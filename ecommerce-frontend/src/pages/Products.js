@@ -24,9 +24,9 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  const handleProductClick = (id) => {
-    navigate(`/products/parts/${id}`);
-  };
+  // const handleProductClick = (id) => {
+  //   navigate(`/products/parts/${id}`);
+  // };
 
   if (loading) {
     return (
@@ -95,7 +95,7 @@ return (
       {products.map((product) => (
         <div
           key={product.id}
-          onClick={() => handleProductClick(product.id)}
+          // onClick={() => handleProductClick(product.id)}
           className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
         >
           <Link

@@ -22,9 +22,9 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  const handleCategoryClick = (id) => {
-    navigate(`/products/category/${id}`);
-  };
+  // const handleCategoryClick = (id) => {
+  //   navigate(`/products/category/${id}`);
+  // };
 
   if (loading) return <div>Loading...</div>;
 
@@ -35,12 +35,12 @@ const Categories = () => {
         {categories.map((category) => (
           <div
             key={category.category_id}
-            onClick={() => handleCategoryClick(category.category_id)}
+            // onClick={() => handleCategoryClick(category.category_id)}
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
           >
             {/* <h2 className="text-xl font-semibold mb-2">{category.category_name}</h2> */}
             <Link
-            to={`/category/${category.category_id}`}
+            to={`/products/category/${category.category_id}`}
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow block"
             >
             <h2 className="text-xl font-semibold mb-2">{category.category_name}</h2>
