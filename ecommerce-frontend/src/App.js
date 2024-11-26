@@ -12,6 +12,8 @@ import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import { ReactKeycloakProvider } from '@react-keycloak/web';
 import keycloak from './config/keycloak';
+import { CartProvider } from './context/CartContext';
+import Parts from './pages/Parts';
 
 const App = () => {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -33,6 +35,7 @@ const App = () => {
       silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
       pkceMethod: 'S256'
     }}>
+    <CartProvider>
     <BrowserRouter>
       <div className="min-h-screen bg-gray-50">
         <Navbar />
@@ -42,14 +45,17 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/category" element={<Category />} />
           <Route path="/products/category/:categoryId" element={<CategoryProducts />} />
+          {/* <Route path="/parts/product/:productId" element={<Parts />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/products/:id" element={<ProductDetail />} /> */}
+          <Route path="/parts/product/:productId" element={<Parts />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           </Route>
         </Routes>
       </div>
     </BrowserRouter>
+    </CartProvider>
   </ReactKeycloakProvider>
   );
 };

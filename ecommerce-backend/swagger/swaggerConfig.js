@@ -105,7 +105,7 @@ const options = {
                     required: ['product_id'],
                 },
                 // Parts Table
-                Parts: {
+                Part: {
                     type: 'object',
                     properties: {
                         part_id: {

@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, Search } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
+
+  const { cartItems } = useCart();
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <nav className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-3">
@@ -22,7 +27,7 @@ const Navbar = () => {
             <Link to="/cart" className="relative">
               <ShoppingCart size={24} />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">
-                0
+                {cartCount}
               </span>
             </Link>
           </div>
