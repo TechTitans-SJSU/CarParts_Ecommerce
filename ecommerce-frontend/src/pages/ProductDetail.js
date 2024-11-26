@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { productService } from '../services/products';
-//import axios from 'axios';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -12,7 +11,6 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        //const response = await axios.get(`/api/products/${id}`);
         const response = await productService.get(`/products/${id}`);
         setProduct(response.data);
         setLoading(false);

@@ -4,33 +4,33 @@ export const cartService = {
     return cart ? JSON.parse(cart) : [];
   },
   
-  addToCart: (product) => {
+  addToCart: (part) => {
     const cart = cartService.getCart();
-    const existingItem = cart.find(item => item.product_id === product.product_id);
+    const existingItem = cart.find(item => item.part_id === part.part_id);
     
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      cart.push({ ...product, quantity: 1 });
+      cart.push({ ...part, quantity: 1 });
     }
     
     localStorage.setItem('cart', JSON.stringify(cart));
     return cart;
   },
   
-  removeFromCart: (productId) => {
+  removeFromCart: (partId) => {
     const cart = cartService.getCart();
-    const updatedCart = cart.filter(item => item.product_id !== productId);
+    const updatedCart = cart.filter(item => item.part_id !== partId);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     return updatedCart;
   },
   
-  updateQuantity: (productId, quantity) => {
+  updateQuantity: (partId, quantity) => {
     const cart = cartService.getCart();
-    const item = cart.find(item => item.product_id === productId);
+    const item = cart.find(item => item.part_id === partId);
     if (item) {
       if (quantity <= 0) {
-        return cartService.removeFromCart(productId);
+        return cartService.removeFromCart(partId);
       }
       item.quantity = quantity;
       localStorage.setItem('cart', JSON.stringify(cart));

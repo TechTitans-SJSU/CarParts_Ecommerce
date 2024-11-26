@@ -14,7 +14,6 @@ const Parts = () => {
   useEffect(() => {
     const fetchPartsByProduct = async () => {
       try {
-        // Assuming you have a partService with a getByProduct method
         const response = await partService.getByProduct(productId);
         setParts(response.data);
       } catch (error) {
@@ -28,7 +27,9 @@ const Parts = () => {
   }, [productId]);
 
   const handleAddToCart = (part) => {
-    const updatedCart = cartService.addToCart(part);
+    // Add with initial quantity of 1
+    const partWithQuantity = { ...part, quantity: 1 };
+    const updatedCart = cartService.addToCart(partWithQuantity);
     updateCart(updatedCart);
   };
 
@@ -47,8 +48,8 @@ const Parts = () => {
   };
 
   const getItemQuantity = (partId) => {
-    const item = cartItems.find(item => item.part_id === partId);
-    return item ? item.quantity : 0;
+    const cartItem = cartItems.find(item => item.part_id === partId);
+    return cartItem ? cartItem.quantity : 0;
   };
 
   if (loading) return <div>Loading...</div>;
@@ -59,6 +60,7 @@ const Parts = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {parts.map((part) => {
           const quantity = getItemQuantity(part.part_id);
+          console.log(quantity);
           return (
             <div key={part.part_id} className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="p-4">

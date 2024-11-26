@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { categoryService } from '../services/category';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -22,9 +22,6 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  // const handleCategoryClick = (id) => {
-  //   navigate(`/products/category/${id}`);
-  // };
 
   if (loading) return <div>Loading...</div>;
 
@@ -35,10 +32,8 @@ const Categories = () => {
         {categories.map((category) => (
           <div
             key={category.category_id}
-            // onClick={() => handleCategoryClick(category.category_id)}
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
           >
-            {/* <h2 className="text-xl font-semibold mb-2">{category.category_name}</h2> */}
             <Link
             to={`/products/category/${category.category_id}`}
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow block"
