@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Search } from 'lucide-react';
+import { ShoppingCart, Search, LogOut } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import {KeycloakService} from '../config/keycloak';
 
 const Navbar = () => {
 
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleLogout = () => {
+    KeycloakService.logout();
+  };
 
   return (
     <nav className="bg-white shadow-md">
@@ -30,6 +35,12 @@ const Navbar = () => {
                 {cartCount}
               </span>
             </Link>
+            <button
+              onClick={handleLogout}
+              className="flex items-center text-gray-600 hover:text-red-500"
+            >
+              <LogOut size={24} />
+            </button>
           </div>
         </div>
       </div>

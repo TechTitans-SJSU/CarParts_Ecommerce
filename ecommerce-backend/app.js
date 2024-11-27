@@ -15,15 +15,6 @@ app.use(bodyParser.json());
 // Keycloak Configuration
 
 const memoryStore = new session.MemoryStore();
-// const keycloak = new Keycloak({ store: memoryStore }, {
-//     clientId: 'ecommerce-app',
-//     bearerOnly: true,
-//     serverUrl: 'http://localhost:8080/auth',
-//     realm: 'Ecommerce_Car',
-//     credentials: {
-//         secret: 'GKalicr2Cj1fvW1iWR66DMkraosXT5PD'
-//     }
-// });
 
 app.use(cors({
   origin: ['http://localhost:8080', 'http://localhost:3004'], // Keycloak server
@@ -45,6 +36,7 @@ app.use(keycloak.middleware({
 
 //keycloak routes
 app.use('/api/protected', keycloak.protect(), (req, res) => {
+  console.log(req)
   res.json({ message: "This is a protected route" });
 });
 

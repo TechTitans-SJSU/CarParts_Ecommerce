@@ -25,13 +25,27 @@ const App = () => {
 
   // if (!authenticated) return <div>Loading...</div>;
 
+  const handleOnEvent = (event, error) => {
+    if (event === 'onAuthSuccess') {
+        // Successfully authenticated
+        console.log('Auth success');
+    }
+};
+
   return (
-    <ReactKeycloakProvider authClient={keycloak}
-    initOptions={{
-      onLoad: 'login-required',
-      silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
-      pkceMethod: 'S256'
-    }}>
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      onEvent={handleOnEvent}
+      onTokens={tokens => {
+        console.log('Received tokens');
+      }}
+      initOptions={{
+        onLoad: 'login-required',
+        checkLoginIframe: false,     // Add this
+        pkceMethod: 'S256',
+        flow: 'standard'             // Add this
+      }}
+    >
     <CartProvider>
     <BrowserRouter>
       <div className="min-h-screen bg-gray-50">
