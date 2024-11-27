@@ -12,8 +12,6 @@ const { keycloak } = require('./config/keycloak');;
 const app = express();
 app.use(bodyParser.json());
 
-// Keycloak Configuration
-
 const memoryStore = new session.MemoryStore();
 
 app.use(cors({
@@ -42,7 +40,6 @@ app.use('/api/protected', keycloak.protect(), (req, res) => {
 
 
 // Routes
-//app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth'));
 app.use('/users', require('./routes/users'));
 app.use('/products', require('./routes/products'));
@@ -57,24 +54,13 @@ app.use('/order-items', require('./routes/order_item'));
 // Swagger Documentation
 swaggerConfig(app);
 
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, async () => {
-//   try {
-//     await db.sequelize.authenticate();
-//     console.log('Connection has been established successfully.');
-//   } catch (error) {
-//     console.error('Unable to connect to the database:', error);
-//   }
-//   console.log(`Server is running on port ${PORT}`);
-//});
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
   try {
     await db.sequelize.authenticate();
     console.log('Connection has been established successfully.');
     
-    await db.sequelize.sync({ alter: true }); // Move sync here
+    await db.sequelize.sync({ alter: true });
     console.log('Database synchronized');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

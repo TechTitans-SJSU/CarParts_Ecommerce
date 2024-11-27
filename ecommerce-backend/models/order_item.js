@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');  // Adjust path as per your project structure
+const sequelize = require('../config/database'); 
 
 const OrderItem = sequelize.define('OrderItem', {
   order_item_id: {
@@ -24,8 +24,8 @@ const OrderItem = sequelize.define('OrderItem', {
     allowNull: false,  // Price of the product at the time of order
   },
 }, {
-  tableName: 'OrderItems',  // Matches the table name in PostgreSQL
-  timestamps: false,  // Disable automatic Sequelize timestamps
+  tableName: 'OrderItems', 
+  timestamps: false, 
 });
 
 module.exports = OrderItem;

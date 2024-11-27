@@ -124,26 +124,6 @@ router.get('/:id', async (req, res) => {
  *       500:
  *         description: Internal server error
  */
-// router.get('/category/:id', async (req, res) => {
-//   try {
-//     const product = await db.Product.findAll(req.params.id, {
-//       where: { category_id: req.params.id },
-//       include: [
-//         {
-//           model: db.Category,
-//           attributes: ['category_id','category_name']
-//         }
-//       ]
-//     });
-//     if (product.length > 0) {
-//       res.json(product);
-//     } else {
-//       res.status(404).send('No products found for the given category');
-//     }
-//   } catch (err) {
-//     res.status(500).send(err.message);
-//   }
-// });
 
 router.get('/category/:id', async (req, res) => {
   try {

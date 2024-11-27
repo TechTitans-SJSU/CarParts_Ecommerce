@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');  // Adjust path as per your project structure
+const sequelize = require('../config/database');
 
 const Product = sequelize.define('Product', {
 

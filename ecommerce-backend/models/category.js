@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');  // Adjust path as per your project structure
+const sequelize = require('../config/database'); 
 
 const Category = sequelize.define('Category', {
   category_id: {
@@ -9,11 +9,11 @@ const Category = sequelize.define('Category', {
   },
   category_name: {
     type: DataTypes.STRING(255),
-    allowNull: false,  // Name of the category
+    allowNull: false,  
   },
 }, {
-  tableName: 'Category',  // Ensure it matches the actual table name in PostgreSQL
-  timestamps: false,  // Disable automatic Sequelize timestamps
+  tableName: 'Category',  
+  timestamps: false,  
 });
 
 module.exports = Category;
