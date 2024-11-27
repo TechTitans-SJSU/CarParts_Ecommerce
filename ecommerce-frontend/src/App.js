@@ -13,17 +13,6 @@ import { CartProvider } from './context/CartContext';
 import Parts from './pages/Parts';
 
 const App = () => {
-  // const [authenticated, setAuthenticated] = useState(false);
-
-  // useEffect(() => {
-  //   initKeycloak()
-  //     .then((auth) => {
-  //       setAuthenticated(auth);
-  //     })
-  //     .catch(console.error);
-  // }, []);
-
-  // if (!authenticated) return <div>Loading...</div>;
 
   const handleOnEvent = (event, error) => {
     if (event === 'onAuthSuccess') {
@@ -41,9 +30,9 @@ const App = () => {
       }}
       initOptions={{
         onLoad: 'login-required',
-        checkLoginIframe: false,     // Add this
+        checkLoginIframe: false,     
         pkceMethod: 'S256',
-        flow: 'standard'             // Add this
+        flow: 'standard'           
       }}
     >
     <CartProvider>
