@@ -196,6 +196,16 @@ const Cart = () => {
               key={itemId} 
               className="flex items-center border-b p-6 last:border-b-0"
             >
+            <div className="w-24 h-24 flex-shrink-0 mr-6">
+                <img
+                src={`/images/${item.image_name}`}
+                alt={itemName}
+                className="w-full h-full object-cover rounded"
+                onError={(e) => {
+                e.target.src = '/images/default-part.jpg';
+                }}
+            />
+          </div>
               <div className="flex-1">
                 <h3 className="text-lg font-semibold">{itemName}</h3>
                 <p className="text-gray-600">${item.price}</p>

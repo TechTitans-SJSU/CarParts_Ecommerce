@@ -27,7 +27,7 @@ const Part = sequelize.define('Part', {
         type: DataTypes.TEXT,
         allowNull: true,
     },
-    image_url: {
+    image_name: {
         type: DataTypes.STRING(255),
         allowNull: true,
     },

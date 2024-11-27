@@ -63,6 +63,16 @@ const Parts = () => {
           console.log(quantity);
           return (
             <div key={part.part_id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="relative pt-[100%]"> {/* Creates a square aspect ratio */}
+                <img
+                  src={`/images/${part.image_name}`}
+                  alt={part.part_name}
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = '/images/parts/default-part.jpg'; // Fallback image
+                  }}
+                />
+              </div>
               <div className="p-4">
                 <h2 className="text-lg font-semibold mb-2">{part.part_name}</h2>
                 <p className="text-gray-600 mb-2">{part.description}</p>

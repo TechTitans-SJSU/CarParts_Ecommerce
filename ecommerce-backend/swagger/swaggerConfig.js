@@ -125,7 +125,7 @@ const options = {
                             type: 'string',
                             description: 'Detailed description of the product',
                         },
-                        image_url: {
+                        image_name: {
                             type: 'string',
                             maxLength: 255,
                             description: 'URL of the product image',
