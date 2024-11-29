@@ -20,6 +20,8 @@ export const initKeycloak = async () => {
     });
 
     if (authenticated) {
+      //localStorage.setItem('keycloak-token', keycloak.token);
+      //console.log('Authenticated');
       // Automatically refresh the token before it expires
       setInterval(() => {
         keycloak
