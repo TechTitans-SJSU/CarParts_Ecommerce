@@ -50,12 +50,13 @@ app.use('/payments', require('./routes/payments'));
 app.use('/shipping', require('./routes/shipping'));
 app.use('/sales', require('./routes/sales'));
 app.use('/order-items', require('./routes/order_item'));
+app.use('/customer', require('./routes/userorder'));
 
 // Swagger Documentation
 swaggerConfig(app);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, async () => {
+app.listen(PORT,'0.0.0.0', async () => {
   try {
     await db.sequelize.authenticate();
     console.log('Connection has been established successfully.');

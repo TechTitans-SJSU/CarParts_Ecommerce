@@ -11,6 +11,9 @@ import { ReactKeycloakProvider } from '@react-keycloak/web';
 import keycloak from './config/keycloak';
 import { CartProvider } from './context/CartContext';
 import Parts from './pages/Parts';
+import OrderConfirmation from './pages/OrderConfirmation';
+import Dashboard from './pages/Dashboard';
+import Chatbot from './components/ChatBot';
 
 const App = () => {
 
@@ -47,8 +50,11 @@ const App = () => {
           <Route path="/parts/product/:productId" element={<Parts />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-confirmation" element={<OrderConfirmation />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
+        <Chatbot />
       </div>
     </BrowserRouter>
     </CartProvider>

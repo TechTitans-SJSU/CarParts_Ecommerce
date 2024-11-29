@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Trash2, Plus, Minus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const { cartItems, updateCart } = useCart();
+  const navigate = useNavigate();
 
   const handleUpdateQuantity = (itemId, change) => {
     const updatedCart = cartItems.map(item => {
@@ -42,6 +44,10 @@ const Cart = () => {
   // Helper function to get item ID
   const getItemId = (item) => {
     return item.part_id;
+  };
+
+  const handleCheckout = () => {
+    navigate('/checkout');
   };
 
   if (cartItems.length === 0) {
@@ -130,12 +136,12 @@ const Cart = () => {
           >
             Continue Shopping
           </Link>
-          <Link
-            to="/checkout"
-            className="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+          <button
+          onClick={() => navigate('/checkout')}
+          className="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
           >
-            Proceed to Checkout
-          </Link>
+          Proceed to Checkout
+          </button>
         </div>
       </div>
     </div>

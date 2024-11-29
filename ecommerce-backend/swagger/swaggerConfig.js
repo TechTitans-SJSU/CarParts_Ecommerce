@@ -1,5 +1,6 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const { userorderitems, userorders } = require('../models');
 
 const options = {
   definition: {
@@ -11,16 +12,20 @@ const options = {
     components: {
         schemas: {
             //Order Items Table
-                OrderItem: {
+                userorderitems: {
                     type: 'object',
                     properties: {
                     id: {
                         type: 'integer',
                         description: 'Unique identifier for the order item',
                     },
-                    productId: {
+                    order_id: {
                         type: 'integer',
-                        description: 'ID of the associated product',
+                        description: 'ID of the associated order',
+                    },
+                    part_id: {
+                        type: 'integer',
+                        description: 'ID of the associated order',
                     },
                     quantity: {
                         type: 'integer',
@@ -31,12 +36,8 @@ const options = {
                         format: 'float',
                         description: 'Price of the order item',
                     },
-                    orderId: {
-                        type: 'integer',
-                        description: 'ID of the associated order',
                     },
-                    },
-                    required: ['productId', 'quantity', 'price', 'orderId'],
+                    required: ['orderId', 'part_id','quantity', 'price'],
                 },
                 // Users Table
                 User: {
@@ -189,7 +190,49 @@ const options = {
                     },
                     required: ['user_id', 'order_date', 'status'],
                 },
-    
+                // UserOrder Table
+                userorders: {
+                    type: 'object',
+                    properties: {
+                        order_id: {
+                            type: 'string',
+                            description: 'Unique identifier for each order',
+                        },
+                        user_id: {
+                            type: 'string',
+                            description: 'Foreign key referencing the users table',
+                        },
+                        first_name: {
+                            type: 'string',
+                            description: 'First name of the user',
+                        },
+                        last_name: {
+                            type: 'string',
+                            description: 'Last name of the user',
+                        },
+                        email: {
+                            type: 'string',
+                            description: 'Email address of the user',
+                        },
+                        shipping_address: {
+                            type: 'string',
+                            description: 'Shipping address',
+                        },
+                        city: {
+                            type: 'string',
+                            description: 'City of the user',
+                        },
+                        zip_code: {
+                            type: 'string',
+                            description: 'Zip code of the user',
+                        },
+                        created_at: {
+                            type: 'string',
+                            description: 'Timestamp when the order was created',
+                        },
+                    },
+                    required: ['orderId','userId', 'created_at'],
+                },
                 // Categories Table
                 Category: {
                     type: 'object',
