@@ -55,6 +55,8 @@ app.use('/customer', require('./routes/userorder'));
 // Swagger Documentation
 swaggerConfig(app);
 
+// Only start the server if this file is being run directly (not being required/imported)
+if (require.main === module) {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,'0.0.0.0', async () => {
   try {
@@ -68,3 +70,6 @@ app.listen(PORT,'0.0.0.0', async () => {
   }
   console.log(`Server is running on port ${PORT}`);
 });
+}
+
+module.exports = app;
