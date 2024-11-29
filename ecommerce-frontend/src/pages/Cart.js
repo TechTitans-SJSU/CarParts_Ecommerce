@@ -46,9 +46,9 @@ const Cart = () => {
     return item.part_id;
   };
 
-  const handleCheckout = () => {
-    navigate('/checkout');
-  };
+  // const handleCheckout = () => {
+  //   navigate('/checkout');
+  // };
 
   if (cartItems.length === 0) {
     return (
