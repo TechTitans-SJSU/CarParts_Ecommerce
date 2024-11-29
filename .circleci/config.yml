@@ -11,8 +11,9 @@ jobs:
   # Frontend Build and Deploy to Docker Hub
   frontend-build:
     docker:
-      - image: aishwaryamurahari/ecommerce-frontend:1.0
+      - image: circleci/node:16
     steps:
+      - setup_remote_docker
       - checkout
       - run:
           name: Install Frontend Dependencies
@@ -34,8 +35,9 @@ jobs:
   # Backend Build and Deploy to Docker Hub
   backend-build:
     docker:
-      - image: aishwaryamurahari/ecommerce-backend:1.0
+      - image: circleci/node:16
     steps:
+      - setup_remote_docker
       - checkout
       - run:
           name: Install Backend Dependencies
