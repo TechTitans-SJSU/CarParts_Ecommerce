@@ -19,6 +19,9 @@ jobs:
           name: Install Frontend Dependencies
           command: cd ecommerce-frontend && npm install
       - run:
+          name: Run Frontend Tests
+          command: cd ecommerce-frontend && npm run test
+      - run:
           name: Build Frontend
           command: cd ecommerce-frontend && npm run build
       - run:
