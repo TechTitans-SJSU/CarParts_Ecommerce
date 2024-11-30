@@ -46,4 +46,8 @@ class RUMService {
     }
   }
   
-  export default new RUMService();
+  
+//export default new RUMService();
+
+const rumServiceInstance = new RUMService();
+export default rumServiceInstance;
