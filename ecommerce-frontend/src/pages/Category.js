@@ -18,10 +18,10 @@ const Categories = () => {
         const response = await categoryService.getAll();
         const duration = performance.now() - startTime;
 
-        RUMService.trackApiCall('/products/category/${category.category_id}', duration, 'success');
+        RUMService.trackApiCall('/products/category', duration, 'success');
         setCategories(response.data);
       } catch (error) {
-        RUMService.trackApiCall('/products/category/${category.category_id}', performance.now() - startTime, 'error');
+        RUMService.trackApiCall('/products/category', performance.now() - startTime, 'error');
         console.error('Error:', error);
       } finally {
         setLoading(false);

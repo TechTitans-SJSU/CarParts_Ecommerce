@@ -17,12 +17,12 @@ const Products = () => {
         const response = await productService.getAll();
 
         const duration = performance.now() - startTime;
-        RUMService.trackApiCall('/products/${product.id}/parts', duration, 'success');
+        RUMService.trackApiCall(`/products/${product.id}/parts`, duration, 'success');
 
         setProducts(response.data);
         setLoading(false);
       } catch (error) {
-        RUMService.trackApiCall('/products/${product.id}/parts', performance.now() - startTime, 'error');
+        RUMService.trackApiCall(`/products/${product.id}/parts`, performance.now() - startTime, 'error');
         console.error('Error fetching products:', error);
         setLoading(false);
       }

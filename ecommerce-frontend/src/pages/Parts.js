@@ -17,7 +17,6 @@ const Parts = () => {
     RUMService.trackPageLoad('Parts');
 
     const fetchPartsByProduct = async () => {
-      const startTime = performance.now();
       try {
         const response = await partService.getByProduct(productId);
         setParts(response.data);
