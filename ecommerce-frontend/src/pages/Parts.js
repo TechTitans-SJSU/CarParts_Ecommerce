@@ -4,6 +4,7 @@ import { Plus, Minus, ShoppingCart } from 'lucide-react';
 import { cartService } from '../services/cart';
 import { useCart } from '../context/CartContext';
 import { partService } from '../services/parts';
+import RUMService from '../services/RUMService';
 
 const Parts = () => {
   const [parts, setParts] = useState([]);
@@ -11,8 +12,12 @@ const Parts = () => {
   const { productId } = useParams();
   const { cartItems, updateCart } = useCart();
 
+
   useEffect(() => {
+    RUMService.trackPageLoad('Parts');
+
     const fetchPartsByProduct = async () => {
+      const startTime = performance.now();
       try {
         const response = await partService.getByProduct(productId);
         setParts(response.data);

@@ -1,0 +1,21 @@
+{
+    "dashboard": {
+      "title": "Checkout Funnel",
+      "panels": [
+        {
+          "title": "Conversion Rate",
+          "type": "stat",
+          "targets": [{
+            "expr": "sum(checkout_complete) / sum(checkout_start) * 100"
+          }]
+        },
+        {
+          "title": "Form Completion Time",
+          "type": "heatmap",
+          "targets": [{
+            "expr": "rate(form_completion_duration_seconds_bucket[5m])"
+          }]
+        }
+      ]
+    }
+  }

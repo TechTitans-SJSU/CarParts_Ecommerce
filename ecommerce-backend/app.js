@@ -4,6 +4,7 @@ const db = require('./models');
 const session = require('express-session');
 const Keycloak = require('keycloak-connect');
 const swaggerConfig = require('./swagger/swaggerConfig');
+const metricsRouter = require('./routes/metrics');
 
 const cors = require('cors');
 
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 const memoryStore = new session.MemoryStore();
 
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:3004'], // Keycloak server
+  origin: ['http://localhost:8080', 'http://localhost:3004', 'http://localhost:3001', 'http://localhost:9090'], // Keycloak server
   credentials: true
 }));
 
@@ -37,6 +38,9 @@ app.use('/api/protected', keycloak.protect(), (req, res) => {
   console.log(req)
   res.json({ message: "This is a protected route" });
 });
+
+// Add the metrics route
+app.use(metricsRouter);
 
 
 // Routes
