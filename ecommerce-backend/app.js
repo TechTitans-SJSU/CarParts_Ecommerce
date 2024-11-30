@@ -4,8 +4,7 @@ const db = require('./models');
 const session = require('express-session');
 const Keycloak = require('keycloak-connect');
 const swaggerConfig = require('./swagger/swaggerConfig');
-// const metricsRouter = require('./routes/metrics');
-const { router: metricsRouter } = require('./routes/metrics'); // Adjust path as needed
+const { router: metricsRouter, startMetricsRecording, stopMetricsRecording } = require('./routes/metrics');
 
 const cors = require('cors');
 
@@ -17,7 +16,10 @@ app.use(bodyParser.json());
 const memoryStore = new session.MemoryStore();
 
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:3004', 'http://localhost:3001', 'http://localhost:9090'], // Keycloak server
+  origin: ['http://localhost:8080',
+           'http://localhost:3004',
+           'http://localhost:3001',
+           'http://localhost:9090'], // Keycloak server
   credentials: true
 }));
 
@@ -43,6 +45,8 @@ app.use('/api/protected', keycloak.protect(), (req, res) => {
 // Add the metrics route
 app.use(metricsRouter);
 
+// Start metrics recording
+startMetricsRecording();
 
 // Routes
 app.use('/auth', require('./routes/auth'));
@@ -63,11 +67,11 @@ swaggerConfig(app);
 // Only start the server if this file is being run directly (not being required/imported)
 if (require.main === module) {
 const PORT = process.env.PORT || 3000;
-app.listen(PORT,'0.0.0.0', async () => {
+const server = app.listen(PORT,'0.0.0.0', async () => {
   try {
     await db.sequelize.authenticate();
     console.log('Connection has been established successfully.');
-    
+
     await db.sequelize.sync({ alter: true });
     console.log('Database synchronized');
   } catch (error) {
@@ -75,6 +79,32 @@ app.listen(PORT,'0.0.0.0', async () => {
   }
   console.log(`Server is running on port ${PORT}`);
 });
+
+// Graceful Shutdown Logic
+const shutdown = async () => {
+  console.log('Shutting down server...');
+  try {
+    // Stop metrics recording
+    stopMetricsRecording();
+
+    // Close database connections
+    await db.sequelize.close();
+    console.log('Database connection closed.');
+
+    // Close the server
+    server.close(() => {
+      console.log('HTTP server closed.');
+      process.exit(0); // Exit cleanly
+    });
+    } catch (error) {
+      console.error('Error during shutdown:', error);
+      process.exit(1); // Exit with error
+    }
+  };
+
+  // Handle termination signals
+  process.on('SIGINT', shutdown); // Handle Ctrl+C
+  process.on('SIGTERM', shutdown); // Handle termination from orchestration tools
 }
 
 module.exports = app;
