@@ -1,31 +1,3 @@
-// // backend/routes/metrics.js
-// const express = require('express');
-// const router = express.Router();
-
-
-// // Endpoint to receive metrics
-// router.post('/api/metrics', async (req, res) => {
-//   try {
-//     const { type, timestamp, data } = req.body;
-
-//     // Basic validation
-//     if (!type || !timestamp || !data) {
-//       return res.status(400).json({ error: 'Invalid data format' });
-//     }
-
-//     // Log the metric (or save to a database)
-//     console.log('Received Metric:', { type, timestamp, data });
-
-
-//     res.status(201).json({ message: 'Metric recorded successfully' });
-//   } catch (error) {
-//     console.error('Error handling metric:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
-
-// module.exports = router;
-
 const express = require('express');
 const client = require('prom-client'); // Prometheus client library
 const router = express.Router();
@@ -40,22 +12,64 @@ const pageLoadTime = new client.Gauge({
   labelNames: ['page']
 });
 
+const httpRequestDuration = new client.Histogram({
+  name: 'http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: ['method', 'route', 'status_code'],
+  buckets: [0.1, 0.5, 1, 2, 5, 10] // Define bucket ranges for histogram
+});
+
+const httpRequestCount = new client.Counter({
+  name: 'http_request_count',
+  help: 'Total number of HTTP requests',
+  labelNames: ['method', 'route', 'status_code']
+});
+
+const errorCount = new client.Counter({
+  name: 'error_count',
+  help: 'Total number of application errors',
+  labelNames: ['type']
+});
+
+const processMemoryUsage = new client.Gauge({
+  name: 'process_memory_usage_bytes',
+  help: 'Memory usage of the Node.js process',
+  labelNames: ['type']
+});
+
+const activeSessions = new client.Gauge({
+  name: 'active_sessions',
+  help: 'Number of active user sessions'
+});
+
 // Add metrics to the registry
 register.registerMetric(pageLoadTime);
+register.registerMetric(httpRequestDuration);
+register.registerMetric(httpRequestCount);
+register.registerMetric(errorCount);
+register.registerMetric(processMemoryUsage);
+register.registerMetric(activeSessions);
 
+// Use default metrics provided by prom-client (e.g., CPU usage, event loop lag)
+client.collectDefaultMetrics({ register });
+
+// Simulate page load times for different pages
 const pages = ['Categories', 'Products', 'Checkout', 'Parts'];
-
-// Store the interval ID
 let metricsInterval;
 
-// Example of recording metrics
 function startMetricsRecording() {
   metricsInterval = setInterval(() => {
     pages.forEach((page) => {
       const simulatedLoadTime = Math.random() * 200; // Simulate load time
       pageLoadTime.set({ page }, simulatedLoadTime); // Record load time for the page
-      console.log(`Recorded load time for ${page}: ${simulatedLoadTime}ms`);
     });
+
+    // Simulate memory usage
+    const memoryUsage = process.memoryUsage();
+    processMemoryUsage.set({ type: 'heapUsed' }, memoryUsage.heapUsed);
+    processMemoryUsage.set({ type: 'heapTotal' }, memoryUsage.heapTotal);
+
+    // console.log('Metrics updated.');
   }, 5000);
 }
 
@@ -63,8 +77,34 @@ function stopMetricsRecording() {
   clearInterval(metricsInterval);
 }
 
-// Start recording metrics when the module is initialized
-startMetricsRecording();
+// Middleware to track HTTP request metrics
+router.use((req, res, next) => {
+  if (req.path === '/metrics') return next(); // Exclude /metrics from tracking
+  const start = process.hrtime();
+  res.on('finish', () => {
+    const duration = process.hrtime(start);
+    const durationInSeconds = duration[0] + duration[1] / 1e9;
+
+    // Record HTTP request duration
+    httpRequestDuration.observe(
+      {
+        method: req.method,
+        route: req.route ? req.route.path : req.url,
+        status_code: res.statusCode
+      },
+      durationInSeconds
+    );
+
+    // Increment HTTP request count
+    httpRequestCount.inc({
+      method: req.method,
+      route: req.route ? req.route.path : req.url,
+      status_code: res.statusCode
+    });
+  });
+
+  next();
+});
 
 // Expose metrics at /metrics
 router.get('/metrics', async (req, res) => {
@@ -73,4 +113,4 @@ router.get('/metrics', async (req, res) => {
 });
 
 // Export both the router and the cleanup function
-module.exports = { router, stopMetricsRecording };
+module.exports = { router, stopMetricsRecording, startMetricsRecording };
