@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { categoryService } from '../services/category';
+import RUMService from '../services/RUMService';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -8,11 +9,19 @@ const Categories = () => {
 
 
   useEffect(() => {
+     // Track page load
+     RUMService.trackPageLoad('Categories');
+
     const fetchCategories = async () => {
+      const startTime = performance.now();
       try {
         const response = await categoryService.getAll();
+        const duration = performance.now() - startTime;
+
+        RUMService.trackApiCall('/products/category/${category.category_id}', duration, 'success');
         setCategories(response.data);
       } catch (error) {
+        RUMService.trackApiCall('/products/category/${category.category_id}', performance.now() - startTime, 'error');
         console.error('Error:', error);
       } finally {
         setLoading(false);
@@ -22,6 +31,9 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
+  const handleCategoryClick = (categoryId) => {
+    RUMService.trackInteraction('Categories', 'category_click', { categoryId });
+  };
 
   if (loading) return <div>Loading...</div>;
 
@@ -35,6 +47,7 @@ const Categories = () => {
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
           >
             <Link
+            onClick={() => handleCategoryClick(category.category_id)}
             to={`/products/category/${category.category_id}`}
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow block"
             >

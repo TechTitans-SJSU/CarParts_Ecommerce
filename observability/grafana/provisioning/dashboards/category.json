@@ -1,0 +1,21 @@
+{
+    "dashboard": {
+      "title": "Category Performance",
+      "panels": [
+        {
+          "title": "Category Page Views",
+          "type": "graph",
+          "targets": [{
+            "expr": "sum(rate(page_views_total{page=\"category\"}[5m])) by (category_id)"
+          }]
+        },
+        {
+          "title": "Category Click-through Rate",
+          "type": "gauge",
+          "targets": [{
+            "expr": "sum(category_clicks) / sum(category_views) * 100"
+          }]
+        }
+      ]
+    }
+  }

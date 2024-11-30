@@ -1,0 +1,48 @@
+{
+    "dashboard": {
+      "title": "E-commerce Metrics",
+      "panels": [
+        {
+          "title": "Page Load Times",
+          "type": "graph",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "targets": [{
+            "expr": "rate(page_load_duration_seconds_sum[5m])",
+            "legendFormat": "{{page}}"
+          }]
+        },
+        {
+          "title": "API Response Times",
+          "type": "graph",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 0
+          },
+          "targets": [{
+            "expr": "rate(api_call_duration_seconds_sum[5m])",
+            "legendFormat": "{{endpoint}}"
+          }]
+        },
+        {
+          "title": "Error Rate",
+          "type": "stat",
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 8
+          },
+          "targets": [{
+            "expr": "sum(rate(api_call_duration_seconds_count{status=\"error\"}[5m]))"
+          }]
+        }
+      ]
+    }
+  }

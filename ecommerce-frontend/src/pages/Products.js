@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { productService } from '../services/products';
 import { useNavigate, Link } from 'react-router-dom';
+import RUMService from '../services/RUMService';
+
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    RUMService.trackPageLoad('Products');
+
     const fetchProducts = async () => {
+      const startTime = performance.now();
       try {
         const response = await productService.getAll();
+
+        const duration = performance.now() - startTime;
+        RUMService.trackApiCall('/products/${product.id}/parts', duration, 'success');
+
         setProducts(response.data);
         setLoading(false);
       } catch (error) {
+        RUMService.trackApiCall('/products/${product.id}/parts', performance.now() - startTime, 'error');
         console.error('Error fetching products:', error);
         setLoading(false);
       }
@@ -20,6 +30,10 @@ const Products = () => {
 
     fetchProducts();
   }, []);
+
+  const handleProductClick = (productId) => {
+    RUMService.trackInteraction('Products', 'product_click', { productId });
+  };
 
   if (loading) {
     return (
@@ -40,6 +54,7 @@ return (
           className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
         >
           <Link
+            onClick={() => handleProductClick(product.id)}
             to={`/products/${product.id}/parts`}
             className="p-6 block"
           >
