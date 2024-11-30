@@ -1,5 +1,6 @@
 const request = require('supertest');
 const express = require('express');
+const { router, stopMetricsRecording } = require('../routes/metrics'); 
 
 // Mock Sequelize before requiring app
 jest.mock('sequelize', () => {
@@ -130,8 +131,11 @@ beforeAll(async () => {
 });
 
 afterAll((done) => {
+  // Ensure the interval is cleared after tests
+  stopMetricsRecording();
   server.close(done);
 });
+
 
 describe('Protected Routes', () => {
   it('should deny access to /api/protected without authorization', async () => {
@@ -152,3 +156,5 @@ describe('Protected Routes', () => {
     expect(res.body.message).toBe('This is a protected route');
   });
 });
+
+jest.useFakeTimers();

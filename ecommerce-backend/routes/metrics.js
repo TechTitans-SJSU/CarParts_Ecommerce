@@ -45,14 +45,26 @@ register.registerMetric(pageLoadTime);
 
 const pages = ['Categories', 'Products', 'Checkout', 'Parts'];
 
+// Store the interval ID
+let metricsInterval;
+
 // Example of recording metrics
-setInterval(() => {
+function startMetricsRecording() {
+  metricsInterval = setInterval(() => {
     pages.forEach((page) => {
       const simulatedLoadTime = Math.random() * 200; // Simulate load time
       pageLoadTime.set({ page }, simulatedLoadTime); // Record load time for the page
       console.log(`Recorded load time for ${page}: ${simulatedLoadTime}ms`);
     });
   }, 5000);
+}
+
+function stopMetricsRecording() {
+  clearInterval(metricsInterval);
+}
+
+// Start recording metrics when the module is initialized
+startMetricsRecording();
 
 // Expose metrics at /metrics
 router.get('/metrics', async (req, res) => {
@@ -60,5 +72,5 @@ router.get('/metrics', async (req, res) => {
   res.end(await register.metrics());
 });
 
-module.exports = router;
-
+// Export both the router and the cleanup function
+module.exports = { router, stopMetricsRecording };

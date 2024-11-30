@@ -4,7 +4,8 @@ const db = require('./models');
 const session = require('express-session');
 const Keycloak = require('keycloak-connect');
 const swaggerConfig = require('./swagger/swaggerConfig');
-const metricsRouter = require('./routes/metrics');
+// const metricsRouter = require('./routes/metrics');
+const { router: metricsRouter } = require('./routes/metrics'); // Adjust path as needed
 
 const cors = require('cors');
 
