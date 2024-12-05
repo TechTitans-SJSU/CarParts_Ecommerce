@@ -16,12 +16,11 @@ A microservice that sends email confirmations for e-commerce orders using Postgr
 
 ## Quick Start
 
-### 1. Install dependencies:
 ```bash
 pip install -r requirements.txt
 
-### Start RabbitMQ server:
+Start RabbitMQ server:
 rabbitmq-server start
 
-### Run the main service:
+Run the main service:
 python main.py
