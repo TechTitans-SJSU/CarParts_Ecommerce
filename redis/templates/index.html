@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Items</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <h1>My Shop</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+
+        <!-- Trending Items Section -->
+        <section class="trending-items">
+            <h2>Trending Items</h2>
+            <div class="product-carousel">
+                <!-- Product Cards -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product Image">
+                    <h3>Product 1</h3>
+                    <p>Ordered: 150</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product Image">
+                    <h3>Product 2</h3>
+                    <p>Ordered: 200</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product Image">
+                    <h3>Product 3</h3>
+                    <p>Ordered: 180</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product Image">
+                    <h3>Product 4</h3>
+                    <p>Ordered: 120</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid Layout for Trending Items -->
+        <section class="grid-section">
+            <h2>Trending Items - Grid</h2>
+            <div class="grid-container">
+                {% for item, quantity in trending_items %}
+                    <div class="grid-item">
+                        <img src="https://via.placeholder.com/200" alt="Product Image">
+                        <h3>{{ item }}</h3>
+                        <p>Quantity Ordered: {{ quantity }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 My Shop | All rights reserved</p>
+    </footer>
+
+</body>
+</html>
