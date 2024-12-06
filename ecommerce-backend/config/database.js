@@ -62,8 +62,8 @@ require('dotenv').config();
 // module.exports = databaseInstance.getSequelizeInstance();
 
 
-const Sequelize = require('sequelize');
-require('dotenv').config();
+// const Sequelize = require('sequelize');
+// require('dotenv').config();
 
 class Database {
     static instance;
