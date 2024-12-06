@@ -70,25 +70,26 @@ class Database {
 
     constructor() {
         if (!Database.instance) {
-            // Ensure DB_DIALECT is available before creating connection
-            if (!process.env.DB_DIALECT) {
-                throw new Error('DB_DIALECT environment variable is required');
-            }
+            // Default to postgres if not specified
+            const dialect = process.env.DB_DIALECT || 'postgres';
 
-            // Initialize Sequelize connection with explicit dialect
+            // Initialize Sequelize connection
             this.sequelize = new Sequelize({
-                database: process.env.DB_NAME,
-                username: process.env.DB_USER,
-                password: process.env.DB_PASSWORD,
-                host: process.env.DB_HOST,
-                dialect: process.env.DB_DIALECT,
-                dialectOptions: {
-                    ssl: {
-                        require: true,
-                        rejectUnauthorized: false,
+                database: process.env.DB_NAME || 'test_db',
+                username: process.env.DB_USER || 'test_user',
+                password: process.env.DB_PASSWORD || 'test_password',
+                host: process.env.DB_HOST || 'localhost',
+                dialect,
+                ...(process.env.NODE_ENV === 'test' ? {
+                    logging: false,
+                } : {
+                    dialectOptions: {
+                        ssl: {
+                            require: true,
+                            rejectUnauthorized: false,
+                        },
                     },
-                },
-                logging: console.log // Add this for debugging connection issues
+                })
             });
 
             Database.instance = this;
@@ -99,17 +100,6 @@ class Database {
 
     getSequelizeInstance() {
         return this.sequelize;
-    }
-
-    async testConnection() {
-        try {
-            await this.sequelize.authenticate();
-            console.log('Database connection has been established successfully.');
-            return true;
-        } catch (error) {
-            console.error('Unable to connect to the database:', error);
-            return false;
-        }
     }
 }
 
