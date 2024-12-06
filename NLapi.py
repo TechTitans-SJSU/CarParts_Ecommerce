@@ -34,7 +34,8 @@ class DatabaseConnector:
     def connect(self):
         """Initializes the database connection to Neon database."""
         # Use the Neon connection string format
-        db_uri = f"{self.db_type}://{self.username}:{self.password}@{self.host}/{self.database}?sslmode=require"
+        # db_uri = f"{self.db_type}://{self.username}:{self.password}@{self.host}/{self.database}?sslmode=require"
+        db_uri="postgresql://car_parts_db_owner:0F4QXKRPmHBW@ep-bold-union-a698c6lj.us-west-2.aws.neon.tech/car_parts_db?sslmode=require"
         
         try:
             self.engine = create_engine(db_uri)
@@ -101,13 +102,60 @@ class DatabaseManager:
         Customize this method with your specific database context.
         """
         return """
-        This is an automotive parts e-commerce system with 7 major categories: 
-        Engine Parts, Electrical Parts, Braking System, Suspension Parts, Fuel System, Exhaust System, and Transmission.
-        Each product category contains specific product types (like AIR COMPRESSOR, ENGINE BLOCK) which further break down 
-        into specific parts with unique part_id and sub_part combinations. Products are priced between $500-$1000 and maintain stock levels between 10-30 units. 
-        The system tracks complete order fulfillment from user purchase through payment processing and shipping to final delivery.
-        
-        Note: All financial calculations should be rounded to 2 decimal places
+       You are an AI assistant specialized in handling queries about an e-commerce system.
+       Never use LIMIT in your queries.
+       Tables:
+        userorder 
+        userorderitems 
+        Products
+        Parts (It has almost 50 rows might change)
+        Category 
+       
+        You are a SQL expert. When searching for Parts or descriptions:
+            1. Use ILIKE instead of LIKE for case-insensitive matches
+            2. Never use LIMIT in your queries unless specifically requested
+            3. Search both part_name and description columns
+            4. Always include full description in the results
+             For part descriptions, use:
+                SELECT part_name, description 
+                FROM Parts 
+                WHERE description ILIKE '%search_term%' 
+                OR part_name ILIKE '%search_term%'
+            
+            You have access to a database with the following structure:
+           
+            Products belong to specific categories and can have multiple associated Parts
+            Parts are individual items that can be ordered and maintained in inventory
+            Orders are created by users and can contain multiple parts
+            Main Entities
+            Category: Represents product classifications
+            Products: Parent items organized by categories
+            Parts: Individual sellable items linked to products and also their descriptions 
+            Orders: Customer purchases with shipping and payment details
+            Query Guidelines
+            When responding to queries:
+            For inventory-related questions:
+            Reference the Parts table for stock levels, pricing and descriptions.
+            Consider product relationships when reporting availability
+            For order processing:
+            Validate order details against Parts availability
+            Calculate totals based on part prices and quantities
+            Ensure shipping information completeness
+            For part lookups:
+            Navigate the category > product > Parts hierarchy
+            Include details from all connected tables
+            For reporting queries:
+            Consider the temporal aspects using created_at in userorders
+            Aggregate data at product, category, or order levels as needed
+            Response Format
+            Always structure responses to:
+            Validate input against the available schema
+            Include only fields present in the database
+            Handle relationships between tables using appropriate joins
+            Consider performance implications of complex queries
+            Format currency values appropriately
+            Handle NULL values gracefully
+            Remember to maintain data consistency across the product hierarchy and order processing chain.
         """
 
     def setup_langchain(self):
@@ -118,9 +166,10 @@ class DatabaseManager:
             
             # Initialize LLM
             llm = ChatOpenAI(
-                temperature=0.1,
+                temperature=0,
                 model_name="gpt-3.5-turbo",
-                openai_api_key=os.getenv("OPENAI_API_KEY")
+                openai_api_key=os.getenv("OPENAI_API_KEY"),
+                max_tokens=2000 
             )
             
             # Create SQL toolkit and agent
@@ -130,7 +179,9 @@ class DatabaseManager:
                 llm=llm,
                 toolkit=toolkit,
                 verbose=True,
-                agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+                agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+                handle_parsing_errors=True,  # Add error handling
+                top_k=None  # Remove result limiting
             )
         except Exception as e:
             raise Exception(f"Failed to initialize LangChain components: {e}")
