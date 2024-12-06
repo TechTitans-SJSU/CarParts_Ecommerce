@@ -1,6 +1,6 @@
 const request = require('supertest');
 const express = require('express');
-const { router, stopMetricsRecording } = require('../routes/metrics'); 
+const { router, stopMetricsRecording } = require('../routes/metrics');
 
 // Mock Sequelize before requiring app
 jest.mock('sequelize', () => {
@@ -39,10 +39,10 @@ jest.mock('sequelize', () => {
     sync: jest.fn().mockResolvedValue(null),
     Model: MockModel,
   };
-  
+
   const Sequelize = jest.fn(() => mSequelize);
   Sequelize.Model = MockModel;
-  
+
   // Create proper DataTypes that support function calls
   Sequelize.DataTypes = {
     STRING: createDataType('STRING'),
@@ -127,13 +127,20 @@ jest.mock('keycloak-connect', () => {
 
 let server;
 beforeAll(async () => {
+  // added now
+  jest.useFakeTimers();
   server = app.listen();
 });
 
 afterAll((done) => {
   // Ensure the interval is cleared after tests
   stopMetricsRecording();
-  server.close(done);
+  //added now
+  jest.useRealTimers();
+  server.close(() => {
+    done();
+});
+  //server.close(done);
 });
 
 
@@ -142,7 +149,7 @@ describe('Protected Routes', () => {
     const res = await request(app)
       .get('/api/protected')
       .send();
-    
+
     expect(res.statusCode).toBe(403);
     expect(res.body.error).toBe('Forbidden');
   });
@@ -151,7 +158,7 @@ describe('Protected Routes', () => {
     const res = await request(app)
       .get('/api/protected')
       .set('Authorization', 'Bearer mockValidToken');
-    
+
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe('This is a protected route');
   });
