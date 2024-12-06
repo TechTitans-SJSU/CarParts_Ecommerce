@@ -8,6 +8,16 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# Create a .env file with build-time arguments
+ARG REACT_APP_KEYCLOAK_URL
+ARG REACT_APP_KEYCLOAK_REALM
+ARG REACT_APP_KEYCLOAK_CLIENT_ID
+
+# Create .env file with build arguments
+RUN echo "REACT_APP_KEYCLOAK_URL=${REACT_APP_KEYCLOAK_URL}" > .env && \
+    echo "REACT_APP_KEYCLOAK_REALM=${REACT_APP_KEYCLOAK_REALM}" >> .env && \
+    echo "REACT_APP_KEYCLOAK_CLIENT_ID=${REACT_APP_KEYCLOAK_CLIENT_ID}" >> .env
+
 # Copy the rest of the application
 COPY . .
 

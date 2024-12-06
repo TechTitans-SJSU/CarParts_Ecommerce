@@ -33,9 +33,9 @@ const App = () => {
       }}
       initOptions={{
         onLoad: 'login-required',
-        checkLoginIframe: false,     
+        checkLoginIframe: false,
         pkceMethod: 'S256',
-        flow: 'standard'           
+        flow: 'standard'
       }}
     >
     <CartProvider>
