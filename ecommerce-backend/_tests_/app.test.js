@@ -1,3 +1,6 @@
+process.env.NODE_ENV = 'test';
+process.env.DB_DIALECT = 'postgres';
+
 const request = require('supertest');
 const express = require('express');
 const { router, stopMetricsRecording } = require('../routes/metrics');
