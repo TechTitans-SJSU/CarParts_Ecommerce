@@ -20,9 +20,6 @@ export const initKeycloak = async () => {
     });
 
     if (authenticated) {
-      //localStorage.setItem('keycloak-token', keycloak.token);
-      //console.log('Authenticated');
-      // Automatically refresh the token before it expires
       setInterval(() => {
         keycloak
           .updateToken(30) // Refresh if the token will expire in the next 30 seconds
@@ -53,7 +50,7 @@ export const makeAuthenticatedRequest = async (url, options = {}) => {
   try {
       // Ensure token is still valid, refresh if needed
       await keycloak.updateToken(30);
-      
+
       const response = await fetch(url, {
           ...options,
           headers: {
