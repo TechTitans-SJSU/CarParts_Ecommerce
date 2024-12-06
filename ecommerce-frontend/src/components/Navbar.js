@@ -101,7 +101,7 @@ const Navbar = () => {
 
           {/* Power BI / Tableau Link */}
           <a
-            href="https://public.tableau.com/app/profile/lakshmi.dogiparthy/viz/Book1_17327549682010/Dashboard1"
+            href="https://public.tableau.com/app/profile/lakshmi.dogiparthy/viz/Dashboard-TechTaitans/Dashboard1?publish=yes?refresh=y"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 px-3 py-2 text-gray-600 hover:text-blue-500 rounded-lg hover:bg-gray-100"
