@@ -62,36 +62,38 @@ require('dotenv').config();
 // module.exports = databaseInstance.getSequelizeInstance();
 
 
-// const Sequelize = require('sequelize');
-// require('dotenv').config();
-
 class Database {
     static instance;
 
     constructor() {
         if (!Database.instance) {
-            // Default to postgres if not specified
-            const dialect = process.env.DB_DIALECT || 'postgres';
-
-            // Initialize Sequelize connection
-            this.sequelize = new Sequelize({
-                database: process.env.DB_NAME || 'test_db',
-                username: process.env.DB_USER || 'test_user',
-                password: process.env.DB_PASSWORD || 'test_password',
-                host: process.env.DB_HOST || 'localhost',
-                dialect,
+            const config = {
+                // Use test configuration if in test environment
                 ...(process.env.NODE_ENV === 'test' ? {
-                    logging: false,
+                    database: 'test_db',
+                    username: 'test_user',
+                    password: 'test_password',
+                    host: 'localhost',
+                    dialect: 'postgres',
+                    logging: false
                 } : {
+                    // Production/development configuration
+                    database: process.env.DB_NAME,
+                    username: process.env.DB_USER,
+                    password: process.env.DB_PASSWORD,
+                    host: process.env.DB_HOST,
+                    dialect: 'postgres',
                     dialectOptions: {
                         ssl: {
                             require: true,
                             rejectUnauthorized: false,
                         },
                     },
+                    logging: false
                 })
-            });
+            };
 
+            this.sequelize = new Sequelize(config);
             Database.instance = this;
         }
 
@@ -100,6 +102,17 @@ class Database {
 
     getSequelizeInstance() {
         return this.sequelize;
+    }
+
+    async testConnection() {
+        try {
+            await this.sequelize.authenticate();
+            console.log('Database connection has been established successfully.');
+            return true;
+        } catch (error) {
+            console.error('Unable to connect to the database:', error);
+            return false;
+        }
     }
 }
 
