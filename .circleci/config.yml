@@ -7,6 +7,7 @@ workflows:
       - frontend-build
       - backend-build
       - nlapi-build
+      - redis-app-build
 
 jobs:
   # Frontend Build and Deploy to Docker Hub
@@ -91,3 +92,40 @@ jobs:
       - run:
           name: Push NL API Docker Image
           command: docker push aishwaryamurahari/nlapi:latest
+
+  redis-app-build:
+    docker:
+      - image: cimg/python:3.9
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          name: Create Redis App .env file
+          command: |
+            cd redis
+            echo "DB_HOST=${DB_HOST}" > .env
+            echo "DB_NAME=${DB_NAME}" >> .env
+            echo "DB_USER=${DB_USER}" >> .env
+            echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
+            echo "DB_PORT=${DB_PORT}" >> .env
+            echo "DB_SSL_MODE=${DB_SSL_MODE}" >> .env
+            echo "REDIS_HOST=${REDIS_HOST}" >> .env
+            echo "REDIS_PORT=${REDIS_PORT}" >> .env
+            echo "LOG_LEVEL=${LOG_LEVEL}" >> .env
+      - run:
+          name: Install dependencies
+          command: |
+            cd redis
+            pip install -r requirements.txt
+      - run:
+          name: Login to Docker Hub
+          command: |
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+      - run:
+          name: Build Redis App Docker Image
+          command: |
+            cd redis
+            docker build -t aishwaryamurahari/redis-app:latest .
+      - run:
+          name: Push Redis App Docker Image
+          command: docker push aishwaryamurahari/redis-app:latest

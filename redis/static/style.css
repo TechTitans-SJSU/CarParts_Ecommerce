@@ -1,0 +1,143 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #131921;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header .navbar li {
+    display: inline;
+}
+
+header .navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+header .navbar a:hover {
+    color: #ff9900;
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px;
+}
+
+/* Trending Section - Carousel */
+.trending-items {
+    margin-bottom: 40px;
+}
+
+.trending-items h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #131921;
+}
+
+.product-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.product-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.product-card p {
+    color: #888;
+}
+
+/* Grid Section for Products */
+.grid-section {
+    margin-top: 40px;
+}
+
+.grid-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #131921;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.grid-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.grid-item h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.grid-item p {
+    color: #888;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #131921;
+    color: white;
+    margin-top: 40px;
+}
+
+.footer p {
+    margin: 0;
+}
