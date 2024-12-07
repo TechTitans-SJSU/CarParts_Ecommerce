@@ -69,6 +69,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            cd ecommerce-chatbot
             pip install -r requirements.txt
       - run:
           name: Login to Docker Hub
