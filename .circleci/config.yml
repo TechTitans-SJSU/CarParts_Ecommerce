@@ -77,7 +77,7 @@ jobs:
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
       - run:
           name: Build NL API Docker Image
-          command: docker build -t aishwaryamurahari/nlapi:latest .
+          command: docker build -t aishwaryamurahari/nlapi:latest ./ecommerce-chatbot
       - run:
           name: Push NL API Docker Image
           command: docker push aishwaryamurahari/nlapi:latest
