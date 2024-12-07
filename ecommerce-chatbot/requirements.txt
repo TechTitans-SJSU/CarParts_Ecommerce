@@ -1,0 +1,13 @@
+psycopg2-binary
+sqlalchemy
+python-dotenv
+fastapi
+uvicorn
+langchain-community
+langchain-openai
+fastapi
+uvicorn
+python-dotenv
+psycopg2-binary
+sqlalchemy
+pydantic
