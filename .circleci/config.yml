@@ -67,6 +67,16 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
+          name: Create NL API .env file
+          command: |
+            cd ecommerce-chatbot
+            echo "DB_NAME=${DB_NAME}" > .env
+            echo "DB_USER=${DB_USER}" >> .env
+            echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
+            echo "DB_HOST=${DB_HOST}" >> .env
+            echo "DB_DIALECT=${DB_DIALECT}" >> .env
+            echo "OPENAI_API_KEY=${OPENAI_API_KEY}" >> .env
+      - run:
           name: Install dependencies
           command: |
             cd ecommerce-chatbot
