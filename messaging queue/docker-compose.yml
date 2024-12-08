@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DB_HOST=${DB_HOST}
+        - DB_NAME=${DB_NAME}
+        - DB_USER=${DB_USER}
+        - DB_PASSWORD=${DB_PASSWORD}
+        - DB_PORT=${DB_PORT}
+        - DB_SSL_MODE=${DB_SSL_MODE}
+        - RABBITMQ_HOST=${RABBITMQ_HOST}
+        - RABBITMQ_PORT=${RABBITMQ_PORT}
+        - RABBITMQ_USER=${RABBITMQ_USER}
+        - RABBITMQ_PASS=${RABBITMQ_PASS}
+        - SMTP_SERVER=${SMTP_SERVER}
+        - SMTP_PORT=${SMTP_PORT}
+        - EMAIL_USER=${EMAIL_USER}
+        - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+        - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - rabbitmq
+    networks:
+      - app-network
+
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+    networks:
+      - app-network
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  app-network:
+    driver: bridge
