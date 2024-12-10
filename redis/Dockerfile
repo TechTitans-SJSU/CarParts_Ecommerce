@@ -27,5 +27,4 @@ EXPOSE 5001
 # Use the virtual environment's Python as the default Python
 ENV PATH="/app/venv/bin:$PATH"
 
-# Set the default command to run the application
 CMD ["python", "app.py"]
