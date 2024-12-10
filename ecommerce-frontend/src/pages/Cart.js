@@ -13,19 +13,19 @@ const Cart = () => {
       if ((item.part_id === itemId)) {
         const newQuantity = item.quantity + change;
         if (newQuantity <= 0) {
-          return null; 
+          return null;
         }
         return { ...item, quantity: newQuantity };
       }
       return item;
-    }).filter(Boolean); 
+    }).filter(Boolean);
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     updateCart(updatedCart);
   };
 
   const handleRemoveItem = (itemId) => {
-    const updatedCart = cartItems.filter(item => 
+    const updatedCart = cartItems.filter(item =>
       !(item.part_id === itemId)
     );
     localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -36,27 +36,21 @@ const Cart = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
-  // Helper function to get item name
   const getItemName = (item) => {
     return item.part_name;
   };
 
-  // Helper function to get item ID
   const getItemId = (item) => {
     return item.part_id;
   };
-
-  // const handleCheckout = () => {
-  //   navigate('/checkout');
-  // };
 
   if (cartItems.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Your Cart is Empty</h2>
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="text-blue-500 hover:text-blue-600"
           >
             Continue Shopping
@@ -69,15 +63,15 @@ const Cart = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
-      
+
       <div className="bg-white rounded-lg shadow-md">
         {cartItems.map((item) => {
           const itemId = getItemId(item);
           const itemName = getItemName(item);
-          
+
           return (
-            <div 
-              key={itemId} 
+            <div
+              key={itemId}
               className="flex items-center border-b p-6 last:border-b-0"
             >
             <div className="w-24 h-24 flex-shrink-0 mr-6">

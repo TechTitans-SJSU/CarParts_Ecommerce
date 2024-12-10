@@ -1,7 +1,5 @@
-# scripts/insert_sample_products.py
 import os
 import sys
-# Add project root to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from database.db_connector import DatabaseConnection
@@ -12,8 +10,7 @@ logger = logging.getLogger(__name__)
 
 def insert_sample_products():
     db = DatabaseConnection()
-    
-    # Sample products data
+
     products = [
         ('Laptop', 999.99, 50),
         ('Smartphone', 699.99, 100),
@@ -26,7 +23,7 @@ def insert_sample_products():
         ('Printer', 199.99, 60),
         ('External SSD', 129.99, 150)
     ]
-    
+
     try:
         with db.get_connection() as conn:
             with conn.cursor() as cur:

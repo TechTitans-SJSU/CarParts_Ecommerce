@@ -1,4 +1,3 @@
-// src/__mocks__/keycloak-js.js
 const mockKeycloakInstance = {
     init: jest.fn().mockResolvedValue(true),
     login: jest.fn(),
@@ -21,9 +20,9 @@ const mockKeycloakInstance = {
       family_name: "User"
     }
   };
-  
+
   function Keycloak() {
     return mockKeycloakInstance;
   }
-  
+
   module.exports = Keycloak;

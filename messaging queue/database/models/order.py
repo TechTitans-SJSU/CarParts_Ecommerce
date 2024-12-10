@@ -1,9 +1,8 @@
-# database/models/order.py
 from datetime import datetime
 
 class Order:
-    def __init__(self, order_id, user_id, total_amount, payment_details, 
-                 city, zip_code, first_name, last_name, email, status, 
+    def __init__(self, order_id, user_id, total_amount, payment_details,
+                 city, zip_code, first_name, last_name, email, status,
                  shipping_address, created_at=None):
         self.order_id = order_id
         self.user_id = user_id
@@ -22,7 +21,7 @@ class Order:
     def from_dict(cls, data):
         if not data:
             return None
-            
+
         return cls(
             order_id=data['order_id'],
             user_id=data['user_id'],

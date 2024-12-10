@@ -1,4 +1,3 @@
-# services/listeners/db_listener.py
 import time
 import json
 import logging
@@ -34,21 +33,21 @@ class DatabaseListener:
                     f"postgresql://{self.config.DB_USER}:{self.config.DB_PASSWORD}"
                     f"@{self.config.DB_HOST}/{self.config.DB_NAME}?sslmode={self.config.DB_SSL_MODE}"
                 )
-                
+
                 self.conn = psycopg2.connect(connection_string)
                 self.conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-                
+
                 with self.conn.cursor() as cur:
                     cur.execute("LISTEN userorders_notifications;")
                     logger.info("Listening for database notifications...")
-                    
+
                     while True:
                         if select.select([self.conn], [], [], 60) != ([], [], []):
                             self.conn.poll()
                             while self.conn.notifies:
                                 notify = self.conn.notifies.pop(0)
                                 self.handle_notification(notify.payload)
-                        
+
             except Exception as e:
                 logger.error(f"Database listener error: {e}")
                 if self.conn:

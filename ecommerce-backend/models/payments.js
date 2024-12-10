@@ -13,8 +13,8 @@ const Payment = sequelize.define('Payment', {
   },
   payment_date: {
     type: DataTypes.DATE,
-    allowNull: false,  // Date and time of the payment
-    defaultValue: DataTypes.NOW,  // Default to current timestamp
+    allowNull: false,
+    defaultValue: DataTypes.NOW,
   },
   amount: {
     type: DataTypes.DECIMAL(10, 2),
@@ -22,11 +22,11 @@ const Payment = sequelize.define('Payment', {
   },
   payment_method: {
     type: DataTypes.STRING(50),
-    allowNull: false,  // Method of payment (e.g., credit card, PayPal)
+    allowNull: false,
   },
 }, {
-  tableName: 'Payments',  // Ensure it matches the actual table name in PostgreSQL
-  timestamps: false,  // Disable automatic Sequelize timestamps
+  tableName: 'Payments',
+  timestamps: false,
 });
 
 module.exports = Payment;

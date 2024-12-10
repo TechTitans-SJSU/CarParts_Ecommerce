@@ -1,4 +1,3 @@
-// src/__mocks__/axios.js
 const mockAxios = {
     create: jest.fn(() => mockAxios),
     get: jest.fn(() => Promise.resolve({ data: {} })),
@@ -22,5 +21,5 @@ const mockAxios = {
       }
     }
   };
-  
+
   module.exports = mockAxios;

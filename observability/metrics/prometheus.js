@@ -1,4 +1,3 @@
-// metrics/prometheus.js
 const express = require('express');
 const prometheus = require('prom-client');
 
@@ -61,7 +60,7 @@ app.use((req, res, next) => {
     res.on('finish', () => {
       const duration = process.hrtime(start);
       const durationInSeconds = duration[0] + duration[1] / 1e9;
-  
+
       // Record HTTP request duration
       apiCallDuration.observe(
         {
@@ -71,7 +70,7 @@ app.use((req, res, next) => {
         },
         durationInSeconds
       );
-  
+
       // Increment HTTP request count
       requestCount.inc({
         method: req.method,
@@ -82,9 +81,8 @@ app.use((req, res, next) => {
     next();
 });
 
-// Example of handling actual user interactions
 app.post('/page-load', (req, res) => {
-    const { page, loadTime } = req.body; // Expecting page load time from the request
+    const { page, loadTime } = req.body;
     if (page && loadTime) {
       pageLoadDuration.set({ page }, loadTime);
       res.send('Page load time recorded.');
@@ -92,9 +90,9 @@ app.post('/page-load', (req, res) => {
       res.status(400).send('Invalid request.');
     }
   });
-  
+
   app.post('/error', (req, res) => {
-    const { type } = req.body; // Expecting error type from the request
+    const { type } = req.body;
     if (type) {
       errorCount.inc({ type });
       res.send('Error recorded.');
@@ -102,9 +100,9 @@ app.post('/page-load', (req, res) => {
       res.status(400).send('Invalid request.');
     }
   });
-  
+
   app.post('/active-sessions', (req, res) => {
-    const { count } = req.body; // Expecting active session count from the request
+    const { count } = req.body;
     if (typeof count === 'number') {
       activeSessions.set(count);
       res.send('Active sessions updated.');

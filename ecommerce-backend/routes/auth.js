@@ -24,7 +24,7 @@ router.get('/userinfo', keycloak.protect(), (req, res) => {
     }
 });
 
-// Example of a protected route
+
 router.get('/protected', keycloak.protect(), (req, res) => {
     res.json({ message: "This is a protected resource" });
 });

@@ -18,7 +18,7 @@ jest.mock('sequelize', () => {
     return fn;
   };
 
-  // Create a base model class with association methods
+  // Base model class with association methods
   class MockModel {
     static init() { return this; }
     static hasMany() { return this; }
@@ -34,7 +34,6 @@ jest.mock('sequelize', () => {
   const mSequelize = {
     authenticate: jest.fn().mockResolvedValue(true),
     define: jest.fn((modelName) => {
-      // Create a new class that extends MockModel for each model definition
       const ModelClass = class extends MockModel {};
       ModelClass.name = modelName;
       return ModelClass;
@@ -46,7 +45,7 @@ jest.mock('sequelize', () => {
   const Sequelize = jest.fn(() => mSequelize);
   Sequelize.Model = MockModel;
 
-  // Create proper DataTypes that support function calls
+  // Creating DataTypes that support function calls
   Sequelize.DataTypes = {
     STRING: createDataType('STRING'),
     INTEGER: createDataType('INTEGER'),
@@ -63,7 +62,7 @@ jest.mock('sequelize', () => {
     JSONB: createDataType('JSONB'),
   };
 
-  // Add common operators
+  // Add operators
   Sequelize.Op = {
     eq: Symbol('eq'),
     ne: Symbol('ne'),
@@ -81,7 +80,7 @@ jest.mock('sequelize', () => {
   return Sequelize;
 });
 
-// Mock models directly to ensure they're available before app requires them
+// Mock models
 jest.mock('../models', () => {
   const mockModels = {
     Category: {
@@ -105,13 +104,12 @@ jest.mock('../models', () => {
       belongsTo: jest.fn(),
       findAll: jest.fn().mockResolvedValue([]),
     },
-    // Add other models as needed
+
   };
 
   return mockModels;
 });
 
-// Now require the app after mocking
 const app = require('../app');
 
 jest.mock('keycloak-connect', () => {
@@ -130,7 +128,6 @@ jest.mock('keycloak-connect', () => {
 
 let server;
 beforeAll(async () => {
-  // added now
   jest.useFakeTimers();
   server = app.listen();
 });
@@ -138,12 +135,10 @@ beforeAll(async () => {
 afterAll((done) => {
   // Ensure the interval is cleared after tests
   stopMetricsRecording();
-  //added now
   jest.useRealTimers();
   server.close(() => {
     done();
 });
-  //server.close(done);
 });
 
 

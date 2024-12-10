@@ -10,13 +10,10 @@ from langchain_community.callbacks.manager import get_openai_callback
 from langchain_community.utilities import SQLDatabase
 
 from sqlalchemy import create_engine, text
-# from sqlalchemy.engine import Engine
 import os
 from dotenv import load_dotenv
 from typing import List, Dict
-# from contextlib import contextmanager
 
-# Load environment variables
 load_dotenv()
 
 class DatabaseConnector:
@@ -34,7 +31,6 @@ class DatabaseConnector:
     def connect(self):
         """Initializes the database connection to Neon database."""
         # Use the Neon connection string format
-        # db_uri = f"{self.db_type}://{self.username}:{self.password}@{self.host}/{self.database}?sslmode=require"
         db_uri="postgresql://car_parts_db_owner:0F4QXKRPmHBW@ep-bold-union-a698c6lj.us-west-2.aws.neon.tech/car_parts_db?sslmode=require"
 
         try:
@@ -256,16 +252,6 @@ async def query_database(query: Query):
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-# @app.get("/schema")
-# async def get_schema():
-#     """Get database schema information"""
-#     try:
-#         schema = db_manager.get_schema_info()
-#         return {"schema": schema}
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
-
 
 if __name__ == "__main__":
     import uvicorn

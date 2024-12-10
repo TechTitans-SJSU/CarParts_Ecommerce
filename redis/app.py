@@ -56,14 +56,11 @@ def get_trending_products():
     cached_trending = r.get("trending_items")
 
     if cached_trending:
-        # Use cached JSON data
         trending_items_list = json.loads(cached_trending.decode('utf-8'))
     else:
-        # Fetch from DB and cache
         trending_items_list = fetch_trending_items()
         r.set("trending_items", json.dumps(trending_items_list), ex=600)  # Cache for 10 minutes
 
-    # Return the data as JSON for the frontend
     return jsonify(trending_items_list)
 
 if __name__ == '__main__':

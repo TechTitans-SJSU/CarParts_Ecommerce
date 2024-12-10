@@ -18,8 +18,8 @@ const Product = sequelize.define('Product', {
   },
 
 }, {
-  tableName: 'Products',  // Make sure it matches the actual table name in PostgreSQL
-  timestamps: false,  // Disable automatic Sequelize timestamps
+  tableName: 'Products',
+  timestamps: false,
 });
 
 module.exports = Product;

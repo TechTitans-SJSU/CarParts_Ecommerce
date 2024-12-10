@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { checkoutService } from '../services/checkout';
-//import { useKeycloak } from '@react-keycloak/web';
 
 const Checkout = () => {
   const navigate = useNavigate();
   const { cartItems, updateCart } = useCart();
-  //const [isProcessing, setIsProcessing] = useState(false);
-  //const { keycloak } = useKeycloak(); // Access Keycloak instance
- 
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -33,7 +30,7 @@ const Checkout = () => {
       const formattedItems = cartItems.map(item => ({
         part_id: item.part_id,
         quantity: item.quantity,
-        price: parseFloat(item.price.toString()) 
+        price: parseFloat(item.price.toString())
       }));
 
       console.log('Cart Items:', formattedItems);
@@ -54,28 +51,21 @@ const Checkout = () => {
         }
       };
       console.log('Sending order data:', JSON.stringify(orderData, null, 2));
-      
+
       const response = await checkoutService.postcheckoutService(orderData);
 
-      // if (!response.ok) {
-      //   throw new Error('Order submission failed');
-      // }
-      
-    //   const data = await response.json()
        console.log(response);
 
-      // Clear cart and update context
       localStorage.removeItem('cart');
       updateCart([]);
-      
-      // Navigate to confirmation page
+
       navigate('/order-confirmation');
-      
+
     } catch (error) {
       console.error('Error:', error);
-    } 
+    }
 
-    
+
   };
 
   const handleChange = (e) => {
@@ -88,7 +78,7 @@ const Checkout = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Checkout</h1>
-      
+
       {/* Order Summary */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
@@ -104,7 +94,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
-      
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">Shipping Information</h2>

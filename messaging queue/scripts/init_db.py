@@ -1,4 +1,3 @@
-# scripts/init_db.py
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -11,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def init_database():
     db = DatabaseConnection()
-    
+
     # Read SQL from migration file
     migration_file = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -19,10 +18,10 @@ def init_database():
         'migrations',
         'initial.sql'
     )
-    
+
     with open(migration_file, 'r') as f:
         sql = f.read()
-    
+
     try:
         # Execute migrations
         with db.get_connection() as conn:

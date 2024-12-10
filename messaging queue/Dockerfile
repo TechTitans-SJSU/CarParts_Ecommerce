@@ -3,13 +3,6 @@ FROM python:3.9-slim
 # Set working directory
 WORKDIR /app
 
-# # Install system dependencies
-# RUN apt-get update && apt-get install -y \
-#     libpq-dev \
-#     gcc \
-#     && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
 # Install Python dependencies
@@ -18,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
-# Environment variables (should be overridden at runtime)
+# Environment variables
 ENV DB_HOST=ep-bold-union-a698c6lj.us-west-2.aws.neon.tech \
     DB_NAME=car_parts_db \
     DB_USER=car_parts_db_owner \

@@ -1,4 +1,3 @@
-# database/repositories/order_repository.py
 from database.db_connector import DatabaseConnection
 from database.models.order import Order
 import logging
@@ -15,8 +14,8 @@ class OrderRepository:
             with conn.cursor() as cur:
                 query = """
                     INSERT INTO userorders (
-                        total_amount, payment_details, created_at, city, 
-                        zip_code, first_name, last_name, email, status, 
+                        total_amount, payment_details, created_at, city,
+                        zip_code, first_name, last_name, email, status,
                         user_id, shipping_address
                     ) VALUES (
                         %s, %s, CURRENT_TIMESTAMP, %s, %s, %s, %s, %s, %s, %s, %s
@@ -87,7 +86,7 @@ class OrderRepository:
                     """
                     cur.execute(query, (order_id,))
                     order_data = cur.fetchone()
-                    
+
                     # Fetch order items
                     items_query = """
                         SELECT oi.quantity, oi.price, p.name
@@ -97,7 +96,7 @@ class OrderRepository:
                     """
                     cur.execute(items_query, (order_id,))
                     items = cur.fetchall()
-                    
+
                     if order_data:
                         order_data['items'] = items
                     return order_data

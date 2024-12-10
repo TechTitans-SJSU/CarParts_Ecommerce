@@ -19,7 +19,7 @@ app.use(cors({
   origin: ['http://localhost:8080',
            'http://localhost:3004',
            'http://localhost:3001',
-           'http://localhost:9090'], // Keycloak server
+           'http://localhost:9090'],
   credentials: true
 }));
 
@@ -42,7 +42,6 @@ app.use('/api/protected', keycloak.protect(), (req, res) => {
   res.json({ message: "This is a protected route" });
 });
 
-// Add the metrics route
 app.use(metricsRouter);
 
 // Start metrics recording
@@ -64,7 +63,6 @@ app.use('/customer', require('./routes/userorder'));
 // Swagger Documentation
 swaggerConfig(app);
 
-// Only start the server if this file is being run directly (not being required/imported)
 if (require.main === module) {
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT,'0.0.0.0', async () => {
@@ -80,7 +78,6 @@ const server = app.listen(PORT,'0.0.0.0', async () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-// Graceful Shutdown Logic
 const shutdown = async () => {
   console.log('Shutting down server...');
   try {
@@ -94,7 +91,7 @@ const shutdown = async () => {
     // Close the server
     server.close(() => {
       console.log('HTTP server closed.');
-      process.exit(0); // Exit cleanly
+      process.exit(0); // Exit
     });
     } catch (error) {
       console.error('Error during shutdown:', error);
@@ -103,8 +100,8 @@ const shutdown = async () => {
   };
 
   // Handle termination signals
-  process.on('SIGINT', shutdown); // Handle Ctrl+C
-  process.on('SIGTERM', shutdown); // Handle termination from orchestration tools
+  process.on('SIGINT', shutdown);
+  process.on('SIGTERM', shutdown);
 }
 
 module.exports = app;

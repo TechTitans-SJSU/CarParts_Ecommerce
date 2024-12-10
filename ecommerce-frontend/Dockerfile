@@ -18,7 +18,6 @@ RUN echo "REACT_APP_KEYCLOAK_URL=${REACT_APP_KEYCLOAK_URL}" > .env && \
     echo "REACT_APP_KEYCLOAK_REALM=${REACT_APP_KEYCLOAK_REALM}" >> .env && \
     echo "REACT_APP_KEYCLOAK_CLIENT_ID=${REACT_APP_KEYCLOAK_CLIENT_ID}" >> .env
 
-# Copy the rest of the application
 COPY . .
 
 # Build the React app
@@ -28,7 +27,6 @@ RUN npm run build
 RUN npm install -g serve
 
 # Use 'serve' to run the app
-# CMD ["serve", "-s", "build"]
 CMD ["serve", "-s", "build", "-l", "3004"]
 
 # Expose the port

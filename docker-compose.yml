@@ -22,7 +22,6 @@ services:
   frontend:
     build:
       context: ./ecommerce-frontend/
-      # dockerfile: ecommerce-frontend/Dockerfile
     image: aishwaryamurahari/ecommerce-frontend:latest
     container_name: ecommerce-frontend
     ports:
@@ -31,7 +30,6 @@ services:
   backend:
     build:
       context: ./ecommerce-backend/
-      # dockerfile: ecommerce-backend/Dockerfile
     image: aishwaryamurahari/ecommerce-backend:latest
     container_name: ecommerce-backend
     ports:

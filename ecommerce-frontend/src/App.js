@@ -19,7 +19,6 @@ const App = () => {
 
   const handleOnEvent = (event, error) => {
     if (event === 'onAuthSuccess') {
-        // Successfully authenticated
         console.log('Auth success');
     }
 };

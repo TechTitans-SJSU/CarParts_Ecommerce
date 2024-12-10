@@ -1,4 +1,3 @@
-# database/db_connector.py
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import logging
@@ -28,7 +27,6 @@ class DatabaseConnection:
             except:
                 pass
 
-        # Corrected connection string
         connection_string = (
             f"postgresql://{self.config.DB_USER}:{self.config.DB_PASSWORD}"
             f"@{self.config.DB_HOST}/{self.config.DB_NAME}?sslmode={self.config.DB_SSL_MODE}"

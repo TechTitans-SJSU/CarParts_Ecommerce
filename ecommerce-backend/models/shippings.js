@@ -13,24 +13,24 @@ const Shipping = sequelize.define('Shipping', {
   },
   address: {
     type: DataTypes.TEXT,
-    allowNull: false,  // Shipping address
+    allowNull: false,
   },
   tracking_number: {
     type: DataTypes.STRING(100),
-    allowNull: true,  // Tracking number (optional)
+    allowNull: true,
   },
   shipping_date: {
     type: DataTypes.DATE,
-    allowNull: false,  // Date the order was shipped
-    defaultValue: DataTypes.NOW,  // Default to current timestamp
+    allowNull: false,
+    defaultValue: DataTypes.NOW,
   },
   delivery_date: {
     type: DataTypes.DATE,
-    allowNull: true,  // Estimated delivery date (optional)
+    allowNull: true,
   },
 }, {
-  tableName: 'Shipping',  // Ensure it matches the actual table name in PostgreSQL
-  timestamps: false,  // Disable automatic Sequelize timestamps
+  tableName: 'Shipping',
+  timestamps: false,
 });
 
 module.exports = Shipping;

@@ -10,38 +10,38 @@ const User = sequelize.define('User', {
   username: {
     type: DataTypes.STRING(255),
     allowNull: false,
-    unique: true,  // Ensure usernames are unique
+    unique: true,
   },
   email: {
     type: DataTypes.STRING(255),
     allowNull: false,
-    unique: true,  // Ensure emails are unique
+    unique: true,
   },
   password_hash: {
     type: DataTypes.STRING(255),
-    allowNull: false,  // Hashed password for security
+    allowNull: false,
   },
   first_name: {
     type: DataTypes.STRING(100),
-    allowNull: true,  // Optional first name
+    allowNull: true,
   },
   last_name: {
     type: DataTypes.STRING(100),
-    allowNull: true,  // Optional last name
+    allowNull: true,
   },
   created_at: {
     type: DataTypes.DATE,
     allowNull: false,
-    defaultValue: DataTypes.NOW,  // Default to current timestamp
+    defaultValue: DataTypes.NOW,
   },
   is_active: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: true,  // Default to active
+    defaultValue: true,
   },
 }, {
-  tableName: 'Users',  // Ensure it matches the actual table name in PostgreSQL
-  timestamps: false,  // Disable automatic Sequelize timestamps
+  tableName: 'Users',
+  timestamps: false,
 });
 
 module.exports = User;

@@ -31,7 +31,6 @@ const Parts = () => {
   }, [productId]);
 
   const handleAddToCart = (part) => {
-    // Add with initial quantity of 1
     const partWithQuantity = { ...part, quantity: 1 };
     const updatedCart = cartService.addToCart(partWithQuantity);
     updateCart(updatedCart);
@@ -40,7 +39,7 @@ const Parts = () => {
   const handleUpdateQuantity = (part, change) => {
     const currentQuantity = getItemQuantity(part.part_id);
     const newQuantity = currentQuantity + change;
-    
+
     if (newQuantity <= 0) {
       const updatedCart = cartService.removeFromCart(part.part_id);
       updateCart(updatedCart);
@@ -67,13 +66,13 @@ const Parts = () => {
           console.log(quantity);
           return (
             <div key={part.part_id} className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="relative pt-[100%]"> {/* Creates a square aspect ratio */}
+            <div className="relative pt-[100%]">
                 <img
                   src={`/images/${part.image_name}`}
                   alt={part.part_name}
                   className="absolute top-0 left-0 w-full h-full object-cover"
                   onError={(e) => {
-                    e.target.src = '/images/parts/default-part.jpg'; // Fallback image
+                    e.target.src = '/images/parts/default-part.jpg';
                   }}
                 />
               </div>
@@ -83,7 +82,7 @@ const Parts = () => {
                 <p className="text-blue-600 font-medium mb-3">${part.price}</p>
                 <div className="flex flex-col gap-2">
                   {quantity === 0 ? (
-                    <button 
+                    <button
                       onClick={() => handleAddToCart(part)}
                       className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
                     >
@@ -92,14 +91,14 @@ const Parts = () => {
                     </button>
                   ) : (
                     <div className="flex items-center justify-between bg-gray-100 rounded p-2">
-                      <button 
+                      <button
                         onClick={() => handleUpdateQuantity(part, -1)}
                         className="bg-red-500 text-white p-1 rounded hover:bg-red-600 transition-colors"
                       >
                         <Minus size={16} />
                       </button>
                       <span className="font-medium mx-3">{quantity}</span>
-                      <button 
+                      <button
                         onClick={() => handleUpdateQuantity(part, 1)}
                         className="bg-green-500 text-white p-1 rounded hover:bg-green-600 transition-colors"
                       >
