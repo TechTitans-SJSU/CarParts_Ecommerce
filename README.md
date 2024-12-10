@@ -2,6 +2,21 @@
 
 This repository contains an e-commerce application which sells car parts, with an integrated chatbot feature. The application’s components are containerized using Docker and automatically built and deployed with CircleCI.
 
+## Key Features
+- Ecommerce web page for Car parts
+- SSO using Keycloak
+- Two factor autentication using Keycloak
+- Federated signup using Facebook
+- SQL Database using Neon
+- OPENAPI spec based REST API - Swagger
+- Automated email confirmations
+- Message queuing with RabbitMQ
+- Cache using Redis
+- Observability & Metrics with Grafana/Prometheus
+- CI/CD with CircleCI
+- BI Dashboard with Tableau
+- LLM Chatbot
+
 ## Project Components
 
 ### Frontend Application
@@ -137,18 +152,3 @@ All components are containerized and available on Docker Hub under the `aishwary
 - NL API: `aishwaryamurahari/nlapi:latest`
 - Redis App: `aishwaryamurahari/redis-app:latest`
 - RabbitMq: `aishwaryamurahari/rabbit_mq_app:latest`
-
-## Key Features
-- Ecommerce web page for Car parts
-- SSO using Keycloak
-- Two factor autentication using Keycloak
-- Federated signup using Facebook
-- SQL Database using Neon
-- OPENAPI spec based REST API - Swagger
-- Automated email confirmations
-- Message queuing with RabbitMQ
-- Cache using Redis
-- Observability & Metrics with Grafana/Prometheus
-- CI/CD with CircleCI
-- BI Dashboard with Tableau
-- LLM Chatbot
